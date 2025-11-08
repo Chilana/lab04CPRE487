@@ -1,0 +1,37 @@
+# Python virtual environments
+lab04_venv/
+lab04_2_venv/
+new_lab_env/
+venv/
+env/
+ENV/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# TensorFlow datasets cache
+tensorflow-datasets/
+
+# Large model files (optional - uncomment if you don't want to commit these)
+# *.h5
+# *.hdf5
+
+# Training outputs
+train_data/
+log_data/
+
+# Reports and generated files
+reports/hists/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# VSCode
+.vscode/

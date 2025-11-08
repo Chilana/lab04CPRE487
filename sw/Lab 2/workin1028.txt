@@ -1,0 +1,1182 @@
+[[36mInfo[39m]: --- Building Toy Model ---
+Opened binary file data/model/conv1_weights.bin
+Opened binary file data/model/conv1_biases.bin
+Opened binary file data/model/conv2_weights.bin
+Opened binary file data/model/conv2_biases.bin
+Opened binary file data/model/conv3_weights.bin
+Opened binary file data/model/conv3_biases.bin
+Opened binary file data/model/conv4_weights.bin
+Opened binary file data/model/conv4_biases.bin
+Opened binary file data/model/conv5_weights.bin
+Opened binary file data/model/conv5_biases.bin
+Opened binary file data/model/conv6_weights.bin
+Opened binary file data/model/conv6_biases.bin
+Opened binary file data/model/dense1_weights.bin
+Opened binary file data/model/dense1_biases.bin
+Opened binary file data/model/dense2_weights.bin
+Opened binary file data/model/dense2_biases.bin
+[[36mInfo[39m]: 
+--- Running Basic Test ---
+Opened binary file ./data/image_0.bin
+Comparing image 0 to itself (max error): 1
+Comparing image 0 to itself (T/F within epsilon 0.001): false
+
+Change a value by 0.1 and compare again
+Comparing Outputs (Cosine Similarity): True 99.9993%  (0.999993)
+Change a value by 0.1 and compare again...
+Comparing Outputs (Cosine Similarity): True 99.9981%  (0.999981)
+[[36mInfo[39m]: 
+--- Running All Layer Tests ---
+[[36mInfo[39m]: Reset calibration state: conv_layer_count = 0
+[[36mInfo[39m]: Set calibration mode: individual-tests
+[[36mInfo[39m]: Reset dense calibration state: dense_layer_count = 0
+[[36mInfo[39m]: Set dense calibration mode: individual-tests
+[[36mInfo[39m]: 
+--- Running Layer Test 0---
+Opened binary file data/image_0.bin
+[[36mInfo[39m]: Loaded calibration stats for 9 layers
+[[36mInfo[39m]: Processing layer: conv2d (dims: 60x60x32)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 419.308868 (max_weight = 0.302879)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 96646.406250
+[[32mDebug[39m]: Quantized 12288 input values to int8
+[[32mDebug[39m]: Quantized 2400 weight values to int8
+[[32mDebug[39m]: Quantized 32 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d quantized convolution complete
+
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 1.330779, Avg: 0.039092
+[[32mDebug[39m]: Zero outputs: 79261/115200 (68.802948%)
+Timer Layer Inference: elapsed=14.230000ms
+Layer 0 output dimensions: 60 60 32 (total: 115200 elements)
+Output dimensions: 60 60 32 (total: 115200 elements)
+Expected file size: 460800 bytes (115200 elements)
+Opened binary file data/image_0_data/layer_0_output.bin
+Comparing Outputs (Cosine Similarity): True 99.5397%  (0.995397)
+[[36mInfo[39m]: Reset calibration state: conv_layer_count = 0
+[[36mInfo[39m]: Set calibration mode: individual-tests
+[[36mInfo[39m]: Reset dense calibration state: dense_layer_count = 0
+[[36mInfo[39m]: Set dense calibration mode: individual-tests
+[[36mInfo[39m]: 
+--- Running Layer Test 1---
+Opened binary file data/image_0.bin
+[[36mInfo[39m]: Processing layer: conv2d (dims: 60x60x32)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 419.308868 (max_weight = 0.302879)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 96646.406250
+[[32mDebug[39m]: Quantized 12288 input values to int8
+[[32mDebug[39m]: Quantized 2400 weight values to int8
+[[32mDebug[39m]: Quantized 32 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d quantized convolution complete
+
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 1.330779, Avg: 0.039092
+[[32mDebug[39m]: Zero outputs: 79261/115200 (68.802948%)
+[[36mInfo[39m]: Processing layer: conv2d_1 (dims: 56x56x32)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 260.899200 (max_weight = 0.486778)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 60134.597656
+[[32mDebug[39m]: Quantized 115200 input values to int8
+[[32mDebug[39m]: Quantized 25600 weight values to int8
+[[32mDebug[39m]: Quantized 32 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d_1 quantized convolution complete
+
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 2.580461, Avg: 0.034002
+[[32mDebug[39m]: Zero outputs: 86148/100352 (85.845825%)
+Timer Layer Inference: elapsed=131.414001ms
+Layer 1 output dimensions: 56 56 32 (total: 100352 elements)
+Output dimensions: 56 56 32 (total: 100352 elements)
+Expected file size: 401408 bytes (100352 elements)
+Opened binary file data/image_0_data/layer_1_output.bin
+Comparing Outputs (Cosine Similarity): True 99.6066%  (0.996066)
+[[36mInfo[39m]: Reset calibration state: conv_layer_count = 0
+[[36mInfo[39m]: Set calibration mode: individual-tests
+[[36mInfo[39m]: Reset dense calibration state: dense_layer_count = 0
+[[36mInfo[39m]: Set dense calibration mode: individual-tests
+[[36mInfo[39m]: 
+--- Running Layer Test 2---
+Opened binary file data/image_0.bin
+[[36mInfo[39m]: Processing layer: conv2d (dims: 60x60x32)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 419.308868 (max_weight = 0.302879)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 96646.406250
+[[32mDebug[39m]: Quantized 12288 input values to int8
+[[32mDebug[39m]: Quantized 2400 weight values to int8
+[[32mDebug[39m]: Quantized 32 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d quantized convolution complete
+
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 1.330779, Avg: 0.039092
+[[32mDebug[39m]: Zero outputs: 79261/115200 (68.802948%)
+[[36mInfo[39m]: Processing layer: conv2d_1 (dims: 56x56x32)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 260.899200 (max_weight = 0.486778)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 60134.597656
+[[32mDebug[39m]: Quantized 115200 input values to int8
+[[32mDebug[39m]: Quantized 25600 weight values to int8
+[[32mDebug[39m]: Quantized 32 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d_1 quantized convolution complete
+
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 2.580461, Avg: 0.034002
+[[32mDebug[39m]: Zero outputs: 86148/100352 (85.845825%)
+[[36mInfo[39m]: MaxPooling: Starting adaptive quantized computation
+[[32mDebug[39m]: MaxPool dimensions: input=[56x56x32], output=[28x28x32], pool=[2x2]
+[[32mDebug[39m]: MaxPool input element size: 4 bytes
+[[36mInfo[39m]: MaxPool: Input is fp32, using fp32 computation (pipeline compatibility mode)
+[[36mInfo[39m]: MaxPool fp32 computation complete - 25088 outputs
+[[32mDebug[39m]: Output fp32 range: [0.000000, 0.778653]
+Timer Layer Inference: elapsed=128.160995ms
+Layer 2 output dimensions: 28 28 32 (total: 25088 elements)
+Output dimensions: 28 28 32 (total: 25088 elements)
+Expected file size: 100352 bytes (25088 elements)
+Opened binary file data/image_0_data/layer_2_output.bin
+Comparing Outputs (Cosine Similarity): True 99.548%  (0.99548)
+[[36mInfo[39m]: Reset calibration state: conv_layer_count = 0
+[[36mInfo[39m]: Set calibration mode: individual-tests
+[[36mInfo[39m]: Reset dense calibration state: dense_layer_count = 0
+[[36mInfo[39m]: Set dense calibration mode: individual-tests
+[[36mInfo[39m]: 
+--- Running Layer Test 3---
+Opened binary file data/image_0.bin
+[[36mInfo[39m]: Processing layer: conv2d (dims: 60x60x32)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 419.308868 (max_weight = 0.302879)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 96646.406250
+[[32mDebug[39m]: Quantized 12288 input values to int8
+[[32mDebug[39m]: Quantized 2400 weight values to int8
+[[32mDebug[39m]: Quantized 32 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d quantized convolution complete
+
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 1.330779, Avg: 0.039092
+[[32mDebug[39m]: Zero outputs: 79261/115200 (68.802948%)
+[[36mInfo[39m]: Processing layer: conv2d_1 (dims: 56x56x32)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 260.899200 (max_weight = 0.486778)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 60134.597656
+[[32mDebug[39m]: Quantized 115200 input values to int8
+[[32mDebug[39m]: Quantized 25600 weight values to int8
+[[32mDebug[39m]: Quantized 32 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d_1 quantized convolution complete
+
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 2.580461, Avg: 0.034002
+[[32mDebug[39m]: Zero outputs: 86148/100352 (85.845825%)
+[[36mInfo[39m]: MaxPooling: Starting adaptive quantized computation
+[[32mDebug[39m]: MaxPool dimensions: input=[56x56x32], output=[28x28x32], pool=[2x2]
+[[32mDebug[39m]: MaxPool input element size: 4 bytes
+[[36mInfo[39m]: MaxPool: Input is fp32, using fp32 computation (pipeline compatibility mode)
+[[36mInfo[39m]: MaxPool fp32 computation complete - 25088 outputs
+[[32mDebug[39m]: Output fp32 range: [0.000000, 0.778653]
+[[36mInfo[39m]: Processing layer: conv2d_2 (dims: 26x26x64)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 183.425766 (max_weight = 0.692378)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 42277.765625
+[[32mDebug[39m]: Quantized 25088 input values to int8
+[[32mDebug[39m]: Quantized 18432 weight values to int8
+[[32mDebug[39m]: Quantized 64 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d_2 quantized convolution complete
+
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 1.198739, Avg: 0.025876
+[[32mDebug[39m]: Zero outputs: 36378/43264 (84.083763%)
+Timer Layer Inference: elapsed=153.501999ms
+Layer 3 output dimensions: 26 26 64 (total: 43264 elements)
+Output dimensions: 26 26 64 (total: 43264 elements)
+Expected file size: 173056 bytes (43264 elements)
+Opened binary file data/image_0_data/layer_3_output.bin
+Comparing Outputs (Cosine Similarity): True 80.9082%  (0.809082)
+[[36mInfo[39m]: Reset calibration state: conv_layer_count = 0
+[[36mInfo[39m]: Set calibration mode: individual-tests
+[[36mInfo[39m]: Reset dense calibration state: dense_layer_count = 0
+[[36mInfo[39m]: Set dense calibration mode: individual-tests
+[[36mInfo[39m]: 
+--- Running Layer Test 4---
+Opened binary file data/image_0.bin
+[[36mInfo[39m]: Processing layer: conv2d (dims: 60x60x32)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 419.308868 (max_weight = 0.302879)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 96646.406250
+[[32mDebug[39m]: Quantized 12288 input values to int8
+[[32mDebug[39m]: Quantized 2400 weight values to int8
+[[32mDebug[39m]: Quantized 32 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d quantized convolution complete
+
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 1.330779, Avg: 0.039092
+[[32mDebug[39m]: Zero outputs: 79261/115200 (68.802948%)
+[[36mInfo[39m]: Processing layer: conv2d_1 (dims: 56x56x32)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 260.899200 (max_weight = 0.486778)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 60134.597656
+[[32mDebug[39m]: Quantized 115200 input values to int8
+[[32mDebug[39m]: Quantized 25600 weight values to int8
+[[32mDebug[39m]: Quantized 32 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d_1 quantized convolution complete
+
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 2.580461, Avg: 0.034002
+[[32mDebug[39m]: Zero outputs: 86148/100352 (85.845825%)
+[[36mInfo[39m]: MaxPooling: Starting adaptive quantized computation
+[[32mDebug[39m]: MaxPool dimensions: input=[56x56x32], output=[28x28x32], pool=[2x2]
+[[32mDebug[39m]: MaxPool input element size: 4 bytes
+[[36mInfo[39m]: MaxPool: Input is fp32, using fp32 computation (pipeline compatibility mode)
+[[36mInfo[39m]: MaxPool fp32 computation complete - 25088 outputs
+[[32mDebug[39m]: Output fp32 range: [0.000000, 0.778653]
+[[36mInfo[39m]: Processing layer: conv2d_2 (dims: 26x26x64)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 183.425766 (max_weight = 0.692378)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 42277.765625
+[[32mDebug[39m]: Quantized 25088 input values to int8
+[[32mDebug[39m]: Quantized 18432 weight values to int8
+[[32mDebug[39m]: Quantized 64 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d_2 quantized convolution complete
+
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 1.198739, Avg: 0.025876
+[[32mDebug[39m]: Zero outputs: 36378/43264 (84.083763%)
+[[36mInfo[39m]: Processing layer: conv2d_3 (dims: 24x24x64)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 234.513245 (max_weight = 0.541547)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 54052.906250
+[[32mDebug[39m]: Quantized 43264 input values to int8
+[[32mDebug[39m]: Quantized 36864 weight values to int8
+[[32mDebug[39m]: Quantized 64 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d_3 quantized convolution complete
+
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 1.290347, Avg: 0.032897
+[[32mDebug[39m]: Zero outputs: 29940/36864 (81.217445%)
+Timer Layer Inference: elapsed=188.867996ms
+Layer 4 output dimensions: 24 24 64 (total: 36864 elements)
+Output dimensions: 24 24 64 (total: 36864 elements)
+Expected file size: 147456 bytes (36864 elements)
+Opened binary file data/image_0_data/layer_4_output.bin
+Comparing Outputs (Cosine Similarity): True 85.6286%  (0.856286)
+[[36mInfo[39m]: Reset calibration state: conv_layer_count = 0
+[[36mInfo[39m]: Set calibration mode: individual-tests
+[[36mInfo[39m]: Reset dense calibration state: dense_layer_count = 0
+[[36mInfo[39m]: Set dense calibration mode: individual-tests
+[[36mInfo[39m]: 
+--- Running Layer Test 5---
+Opened binary file data/image_0.bin
+[[36mInfo[39m]: Processing layer: conv2d (dims: 60x60x32)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 419.308868 (max_weight = 0.302879)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 96646.406250
+[[32mDebug[39m]: Quantized 12288 input values to int8
+[[32mDebug[39m]: Quantized 2400 weight values to int8
+[[32mDebug[39m]: Quantized 32 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d quantized convolution complete
+
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 1.330779, Avg: 0.039092
+[[32mDebug[39m]: Zero outputs: 79261/115200 (68.802948%)
+[[36mInfo[39m]: Processing layer: conv2d_1 (dims: 56x56x32)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 260.899200 (max_weight = 0.486778)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 60134.597656
+[[32mDebug[39m]: Quantized 115200 input values to int8
+[[32mDebug[39m]: Quantized 25600 weight values to int8
+[[32mDebug[39m]: Quantized 32 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d_1 quantized convolution complete
+
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 2.580461, Avg: 0.034002
+[[32mDebug[39m]: Zero outputs: 86148/100352 (85.845825%)
+[[36mInfo[39m]: MaxPooling: Starting adaptive quantized computation
+[[32mDebug[39m]: MaxPool dimensions: input=[56x56x32], output=[28x28x32], pool=[2x2]
+[[32mDebug[39m]: MaxPool input element size: 4 bytes
+[[36mInfo[39m]: MaxPool: Input is fp32, using fp32 computation (pipeline compatibility mode)
+[[36mInfo[39m]: MaxPool fp32 computation complete - 25088 outputs
+[[32mDebug[39m]: Output fp32 range: [0.000000, 0.778653]
+[[36mInfo[39m]: Processing layer: conv2d_2 (dims: 26x26x64)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 183.425766 (max_weight = 0.692378)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 42277.765625
+[[32mDebug[39m]: Quantized 25088 input values to int8
+[[32mDebug[39m]: Quantized 18432 weight values to int8
+[[32mDebug[39m]: Quantized 64 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d_2 quantized convolution complete
+
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 1.198739, Avg: 0.025876
+[[32mDebug[39m]: Zero outputs: 36378/43264 (84.083763%)
+[[36mInfo[39m]: Processing layer: conv2d_3 (dims: 24x24x64)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 234.513245 (max_weight = 0.541547)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 54052.906250
+[[32mDebug[39m]: Quantized 43264 input values to int8
+[[32mDebug[39m]: Quantized 36864 weight values to int8
+[[32mDebug[39m]: Quantized 64 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d_3 quantized convolution complete
+
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 1.290347, Avg: 0.032897
+[[32mDebug[39m]: Zero outputs: 29940/36864 (81.217445%)
+[[36mInfo[39m]: MaxPooling: Starting adaptive quantized computation
+[[32mDebug[39m]: MaxPool dimensions: input=[24x24x64], output=[12x12x64], pool=[2x2]
+[[32mDebug[39m]: MaxPool input element size: 4 bytes
+[[36mInfo[39m]: MaxPool: Input is fp32, using fp32 computation (pipeline compatibility mode)
+[[36mInfo[39m]: MaxPool fp32 computation complete - 9216 outputs
+[[32mDebug[39m]: Output fp32 range: [0.000000, 0.890997]
+Timer Layer Inference: elapsed=191.391006ms
+Layer 5 output dimensions: 12 12 64 (total: 9216 elements)
+Output dimensions: 12 12 64 (total: 9216 elements)
+Expected file size: 36864 bytes (9216 elements)
+Opened binary file data/image_0_data/layer_5_output.bin
+Comparing Outputs (Cosine Similarity): True 83.7022%  (0.837022)
+[[36mInfo[39m]: Reset calibration state: conv_layer_count = 0
+[[36mInfo[39m]: Set calibration mode: individual-tests
+[[36mInfo[39m]: Reset dense calibration state: dense_layer_count = 0
+[[36mInfo[39m]: Set dense calibration mode: individual-tests
+[[36mInfo[39m]: 
+--- Running Layer Test 6---
+Opened binary file data/image_0.bin
+[[36mInfo[39m]: Processing layer: conv2d (dims: 60x60x32)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 419.308868 (max_weight = 0.302879)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 96646.406250
+[[32mDebug[39m]: Quantized 12288 input values to int8
+[[32mDebug[39m]: Quantized 2400 weight values to int8
+[[32mDebug[39m]: Quantized 32 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d quantized convolution complete
+
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 1.330779, Avg: 0.039092
+[[32mDebug[39m]: Zero outputs: 79261/115200 (68.802948%)
+[[36mInfo[39m]: Processing layer: conv2d_1 (dims: 56x56x32)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 260.899200 (max_weight = 0.486778)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 60134.597656
+[[32mDebug[39m]: Quantized 115200 input values to int8
+[[32mDebug[39m]: Quantized 25600 weight values to int8
+[[32mDebug[39m]: Quantized 32 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d_1 quantized convolution complete
+
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 2.580461, Avg: 0.034002
+[[32mDebug[39m]: Zero outputs: 86148/100352 (85.845825%)
+[[36mInfo[39m]: MaxPooling: Starting adaptive quantized computation
+[[32mDebug[39m]: MaxPool dimensions: input=[56x56x32], output=[28x28x32], pool=[2x2]
+[[32mDebug[39m]: MaxPool input element size: 4 bytes
+[[36mInfo[39m]: MaxPool: Input is fp32, using fp32 computation (pipeline compatibility mode)
+[[36mInfo[39m]: MaxPool fp32 computation complete - 25088 outputs
+[[32mDebug[39m]: Output fp32 range: [0.000000, 0.778653]
+[[36mInfo[39m]: Processing layer: conv2d_2 (dims: 26x26x64)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 183.425766 (max_weight = 0.692378)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 42277.765625
+[[32mDebug[39m]: Quantized 25088 input values to int8
+[[32mDebug[39m]: Quantized 18432 weight values to int8
+[[32mDebug[39m]: Quantized 64 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d_2 quantized convolution complete
+
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 1.198739, Avg: 0.025876
+[[32mDebug[39m]: Zero outputs: 36378/43264 (84.083763%)
+[[36mInfo[39m]: Processing layer: conv2d_3 (dims: 24x24x64)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 234.513245 (max_weight = 0.541547)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 54052.906250
+[[32mDebug[39m]: Quantized 43264 input values to int8
+[[32mDebug[39m]: Quantized 36864 weight values to int8
+[[32mDebug[39m]: Quantized 64 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d_3 quantized convolution complete
+
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 1.290347, Avg: 0.032897
+[[32mDebug[39m]: Zero outputs: 29940/36864 (81.217445%)
+[[36mInfo[39m]: MaxPooling: Starting adaptive quantized computation
+[[32mDebug[39m]: MaxPool dimensions: input=[24x24x64], output=[12x12x64], pool=[2x2]
+[[32mDebug[39m]: MaxPool input element size: 4 bytes
+[[36mInfo[39m]: MaxPool: Input is fp32, using fp32 computation (pipeline compatibility mode)
+[[36mInfo[39m]: MaxPool fp32 computation complete - 9216 outputs
+[[32mDebug[39m]: Output fp32 range: [0.000000, 0.890997]
+[[36mInfo[39m]: Processing layer: conv2d_4 (dims: 10x10x64)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 236.640457 (max_weight = 0.536679)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 54543.207031
+[[32mDebug[39m]: Quantized 9216 input values to int8
+[[32mDebug[39m]: Quantized 36864 weight values to int8
+[[32mDebug[39m]: Quantized 64 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d_4 quantized convolution complete
+
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 1.859058, Avg: 0.106893
+[[32mDebug[39m]: Zero outputs: 4540/6400 (70.937500%)
+Timer Layer Inference: elapsed=192.544006ms
+Layer 6 output dimensions: 10 10 64 (total: 6400 elements)
+Output dimensions: 10 10 64 (total: 6400 elements)
+Expected file size: 25600 bytes (6400 elements)
+Opened binary file data/image_0_data/layer_6_output.bin
+Comparing Outputs (Cosine Similarity): True 89.3109%  (0.893109)
+[[36mInfo[39m]: Reset calibration state: conv_layer_count = 0
+[[36mInfo[39m]: Set calibration mode: individual-tests
+[[36mInfo[39m]: Reset dense calibration state: dense_layer_count = 0
+[[36mInfo[39m]: Set dense calibration mode: individual-tests
+[[36mInfo[39m]: 
+--- Running Layer Test 7---
+Opened binary file data/image_0.bin
+[[36mInfo[39m]: Processing layer: conv2d (dims: 60x60x32)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 419.308868 (max_weight = 0.302879)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 96646.406250
+[[32mDebug[39m]: Quantized 12288 input values to int8
+[[32mDebug[39m]: Quantized 2400 weight values to int8
+[[32mDebug[39m]: Quantized 32 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d quantized convolution complete
+
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 1.330779, Avg: 0.039092
+[[32mDebug[39m]: Zero outputs: 79261/115200 (68.802948%)
+[[36mInfo[39m]: Processing layer: conv2d_1 (dims: 56x56x32)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 260.899200 (max_weight = 0.486778)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 60134.597656
+[[32mDebug[39m]: Quantized 115200 input values to int8
+[[32mDebug[39m]: Quantized 25600 weight values to int8
+[[32mDebug[39m]: Quantized 32 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d_1 quantized convolution complete
+
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 2.580461, Avg: 0.034002
+[[32mDebug[39m]: Zero outputs: 86148/100352 (85.845825%)
+[[36mInfo[39m]: MaxPooling: Starting adaptive quantized computation
+[[32mDebug[39m]: MaxPool dimensions: input=[56x56x32], output=[28x28x32], pool=[2x2]
+[[32mDebug[39m]: MaxPool input element size: 4 bytes
+[[36mInfo[39m]: MaxPool: Input is fp32, using fp32 computation (pipeline compatibility mode)
+[[36mInfo[39m]: MaxPool fp32 computation complete - 25088 outputs
+[[32mDebug[39m]: Output fp32 range: [0.000000, 0.778653]
+[[36mInfo[39m]: Processing layer: conv2d_2 (dims: 26x26x64)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 183.425766 (max_weight = 0.692378)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 42277.765625
+[[32mDebug[39m]: Quantized 25088 input values to int8
+[[32mDebug[39m]: Quantized 18432 weight values to int8
+[[32mDebug[39m]: Quantized 64 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d_2 quantized convolution complete
+
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 1.198739, Avg: 0.025876
+[[32mDebug[39m]: Zero outputs: 36378/43264 (84.083763%)
+[[36mInfo[39m]: Processing layer: conv2d_3 (dims: 24x24x64)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 234.513245 (max_weight = 0.541547)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 54052.906250
+[[32mDebug[39m]: Quantized 43264 input values to int8
+[[32mDebug[39m]: Quantized 36864 weight values to int8
+[[32mDebug[39m]: Quantized 64 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d_3 quantized convolution complete
+
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 1.290347, Avg: 0.032897
+[[32mDebug[39m]: Zero outputs: 29940/36864 (81.217445%)
+[[36mInfo[39m]: MaxPooling: Starting adaptive quantized computation
+[[32mDebug[39m]: MaxPool dimensions: input=[24x24x64], output=[12x12x64], pool=[2x2]
+[[32mDebug[39m]: MaxPool input element size: 4 bytes
+[[36mInfo[39m]: MaxPool: Input is fp32, using fp32 computation (pipeline compatibility mode)
+[[36mInfo[39m]: MaxPool fp32 computation complete - 9216 outputs
+[[32mDebug[39m]: Output fp32 range: [0.000000, 0.890997]
+[[36mInfo[39m]: Processing layer: conv2d_4 (dims: 10x10x64)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 236.640457 (max_weight = 0.536679)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 54543.207031
+[[32mDebug[39m]: Quantized 9216 input values to int8
+[[32mDebug[39m]: Quantized 36864 weight values to int8
+[[32mDebug[39m]: Quantized 64 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d_4 quantized convolution complete
+
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 1.859058, Avg: 0.106893
+[[32mDebug[39m]: Zero outputs: 4540/6400 (70.937500%)
+[[36mInfo[39m]: Processing layer: conv2d_5 (dims: 8x8x128)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 248.700119 (max_weight = 0.510655)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 57322.835938
+[[32mDebug[39m]: Quantized 6400 input values to int8
+[[32mDebug[39m]: Quantized 73728 weight values to int8
+[[32mDebug[39m]: Quantized 128 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d_5 quantized convolution complete
+
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 3.241064, Avg: 0.090099
+[[32mDebug[39m]: Zero outputs: 6630/8192 (80.932617%)
+Timer Layer Inference: elapsed=205.768005ms
+Layer 7 output dimensions: 8 8 128 (total: 8192 elements)
+Output dimensions: 8 8 128 (total: 8192 elements)
+Expected file size: 32768 bytes (8192 elements)
+Opened binary file data/image_0_data/layer_7_output.bin
+Comparing Outputs (Cosine Similarity): True 83.7423%  (0.837423)
+[[36mInfo[39m]: Reset calibration state: conv_layer_count = 0
+[[36mInfo[39m]: Set calibration mode: individual-tests
+[[36mInfo[39m]: Reset dense calibration state: dense_layer_count = 0
+[[36mInfo[39m]: Set dense calibration mode: individual-tests
+[[36mInfo[39m]: 
+--- Running Layer Test 8---
+Opened binary file data/image_0.bin
+[[36mInfo[39m]: Processing layer: conv2d (dims: 60x60x32)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 419.308868 (max_weight = 0.302879)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 96646.406250
+[[32mDebug[39m]: Quantized 12288 input values to int8
+[[32mDebug[39m]: Quantized 2400 weight values to int8
+[[32mDebug[39m]: Quantized 32 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d quantized convolution complete
+
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 1.330779, Avg: 0.039092
+[[32mDebug[39m]: Zero outputs: 79261/115200 (68.802948%)
+[[36mInfo[39m]: Processing layer: conv2d_1 (dims: 56x56x32)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 260.899200 (max_weight = 0.486778)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 60134.597656
+[[32mDebug[39m]: Quantized 115200 input values to int8
+[[32mDebug[39m]: Quantized 25600 weight values to int8
+[[32mDebug[39m]: Quantized 32 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d_1 quantized convolution complete
+
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 2.580461, Avg: 0.034002
+[[32mDebug[39m]: Zero outputs: 86148/100352 (85.845825%)
+[[36mInfo[39m]: MaxPooling: Starting adaptive quantized computation
+[[32mDebug[39m]: MaxPool dimensions: input=[56x56x32], output=[28x28x32], pool=[2x2]
+[[32mDebug[39m]: MaxPool input element size: 4 bytes
+[[36mInfo[39m]: MaxPool: Input is fp32, using fp32 computation (pipeline compatibility mode)
+[[36mInfo[39m]: MaxPool fp32 computation complete - 25088 outputs
+[[32mDebug[39m]: Output fp32 range: [0.000000, 0.778653]
+[[36mInfo[39m]: Processing layer: conv2d_2 (dims: 26x26x64)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 183.425766 (max_weight = 0.692378)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 42277.765625
+[[32mDebug[39m]: Quantized 25088 input values to int8
+[[32mDebug[39m]: Quantized 18432 weight values to int8
+[[32mDebug[39m]: Quantized 64 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d_2 quantized convolution complete
+
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 1.198739, Avg: 0.025876
+[[32mDebug[39m]: Zero outputs: 36378/43264 (84.083763%)
+[[36mInfo[39m]: Processing layer: conv2d_3 (dims: 24x24x64)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 234.513245 (max_weight = 0.541547)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 54052.906250
+[[32mDebug[39m]: Quantized 43264 input values to int8
+[[32mDebug[39m]: Quantized 36864 weight values to int8
+[[32mDebug[39m]: Quantized 64 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d_3 quantized convolution complete
+
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 1.290347, Avg: 0.032897
+[[32mDebug[39m]: Zero outputs: 29940/36864 (81.217445%)
+[[36mInfo[39m]: MaxPooling: Starting adaptive quantized computation
+[[32mDebug[39m]: MaxPool dimensions: input=[24x24x64], output=[12x12x64], pool=[2x2]
+[[32mDebug[39m]: MaxPool input element size: 4 bytes
+[[36mInfo[39m]: MaxPool: Input is fp32, using fp32 computation (pipeline compatibility mode)
+[[36mInfo[39m]: MaxPool fp32 computation complete - 9216 outputs
+[[32mDebug[39m]: Output fp32 range: [0.000000, 0.890997]
+[[36mInfo[39m]: Processing layer: conv2d_4 (dims: 10x10x64)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 236.640457 (max_weight = 0.536679)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 54543.207031
+[[32mDebug[39m]: Quantized 9216 input values to int8
+[[32mDebug[39m]: Quantized 36864 weight values to int8
+[[32mDebug[39m]: Quantized 64 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d_4 quantized convolution complete
+
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 1.859058, Avg: 0.106893
+[[32mDebug[39m]: Zero outputs: 4540/6400 (70.937500%)
+[[36mInfo[39m]: Processing layer: conv2d_5 (dims: 8x8x128)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 248.700119 (max_weight = 0.510655)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 57322.835938
+[[32mDebug[39m]: Quantized 6400 input values to int8
+[[32mDebug[39m]: Quantized 73728 weight values to int8
+[[32mDebug[39m]: Quantized 128 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d_5 quantized convolution complete
+
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 3.241064, Avg: 0.090099
+[[32mDebug[39m]: Zero outputs: 6630/8192 (80.932617%)
+[[36mInfo[39m]: MaxPooling: Starting adaptive quantized computation
+[[32mDebug[39m]: MaxPool dimensions: input=[8x8x128], output=[4x4x128], pool=[2x2]
+[[32mDebug[39m]: MaxPool input element size: 4 bytes
+[[36mInfo[39m]: MaxPool: Input is fp32, using fp32 computation (pipeline compatibility mode)
+[[36mInfo[39m]: MaxPool fp32 computation complete - 2048 outputs
+[[32mDebug[39m]: Output fp32 range: [0.000000, 1.304890]
+Timer Layer Inference: elapsed=202.888000ms
+Layer 8 output dimensions: 4 4 128 (total: 2048 elements)
+Output dimensions: 4 4 128 (total: 2048 elements)
+Expected file size: 8192 bytes (2048 elements)
+Opened binary file data/image_0_data/layer_8_output.bin
+Comparing Outputs (Cosine Similarity): True 84.2591%  (0.842591)
+[[36mInfo[39m]: Reset calibration state: conv_layer_count = 0
+[[36mInfo[39m]: Set calibration mode: individual-tests
+[[36mInfo[39m]: Reset dense calibration state: dense_layer_count = 0
+[[36mInfo[39m]: Set dense calibration mode: individual-tests
+[[36mInfo[39m]: 
+--- Running Layer Test 9---
+Opened binary file data/image_0.bin
+[[36mInfo[39m]: Processing layer: conv2d (dims: 60x60x32)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 419.308868 (max_weight = 0.302879)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 96646.406250
+[[32mDebug[39m]: Quantized 12288 input values to int8
+[[32mDebug[39m]: Quantized 2400 weight values to int8
+[[32mDebug[39m]: Quantized 32 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d quantized convolution complete
+
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 1.330779, Avg: 0.039092
+[[32mDebug[39m]: Zero outputs: 79261/115200 (68.802948%)
+[[36mInfo[39m]: Processing layer: conv2d_1 (dims: 56x56x32)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 260.899200 (max_weight = 0.486778)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 60134.597656
+[[32mDebug[39m]: Quantized 115200 input values to int8
+[[32mDebug[39m]: Quantized 25600 weight values to int8
+[[32mDebug[39m]: Quantized 32 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d_1 quantized convolution complete
+
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 2.580461, Avg: 0.034002
+[[32mDebug[39m]: Zero outputs: 86148/100352 (85.845825%)
+[[36mInfo[39m]: MaxPooling: Starting adaptive quantized computation
+[[32mDebug[39m]: MaxPool dimensions: input=[56x56x32], output=[28x28x32], pool=[2x2]
+[[32mDebug[39m]: MaxPool input element size: 4 bytes
+[[36mInfo[39m]: MaxPool: Input is fp32, using fp32 computation (pipeline compatibility mode)
+[[36mInfo[39m]: MaxPool fp32 computation complete - 25088 outputs
+[[32mDebug[39m]: Output fp32 range: [0.000000, 0.778653]
+[[36mInfo[39m]: Processing layer: conv2d_2 (dims: 26x26x64)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 183.425766 (max_weight = 0.692378)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 42277.765625
+[[32mDebug[39m]: Quantized 25088 input values to int8
+[[32mDebug[39m]: Quantized 18432 weight values to int8
+[[32mDebug[39m]: Quantized 64 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d_2 quantized convolution complete
+
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 1.198739, Avg: 0.025876
+[[32mDebug[39m]: Zero outputs: 36378/43264 (84.083763%)
+[[36mInfo[39m]: Processing layer: conv2d_3 (dims: 24x24x64)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 234.513245 (max_weight = 0.541547)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 54052.906250
+[[32mDebug[39m]: Quantized 43264 input values to int8
+[[32mDebug[39m]: Quantized 36864 weight values to int8
+[[32mDebug[39m]: Quantized 64 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d_3 quantized convolution complete
+
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 1.290347, Avg: 0.032897
+[[32mDebug[39m]: Zero outputs: 29940/36864 (81.217445%)
+[[36mInfo[39m]: MaxPooling: Starting adaptive quantized computation
+[[32mDebug[39m]: MaxPool dimensions: input=[24x24x64], output=[12x12x64], pool=[2x2]
+[[32mDebug[39m]: MaxPool input element size: 4 bytes
+[[36mInfo[39m]: MaxPool: Input is fp32, using fp32 computation (pipeline compatibility mode)
+[[36mInfo[39m]: MaxPool fp32 computation complete - 9216 outputs
+[[32mDebug[39m]: Output fp32 range: [0.000000, 0.890997]
+[[36mInfo[39m]: Processing layer: conv2d_4 (dims: 10x10x64)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 236.640457 (max_weight = 0.536679)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 54543.207031
+[[32mDebug[39m]: Quantized 9216 input values to int8
+[[32mDebug[39m]: Quantized 36864 weight values to int8
+[[32mDebug[39m]: Quantized 64 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d_4 quantized convolution complete
+
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 1.859058, Avg: 0.106893
+[[32mDebug[39m]: Zero outputs: 4540/6400 (70.937500%)
+[[36mInfo[39m]: Processing layer: conv2d_5 (dims: 8x8x128)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 248.700119 (max_weight = 0.510655)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 57322.835938
+[[32mDebug[39m]: Quantized 6400 input values to int8
+[[32mDebug[39m]: Quantized 73728 weight values to int8
+[[32mDebug[39m]: Quantized 128 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d_5 quantized convolution complete
+
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 3.241064, Avg: 0.090099
+[[32mDebug[39m]: Zero outputs: 6630/8192 (80.932617%)
+[[36mInfo[39m]: MaxPooling: Starting adaptive quantized computation
+[[32mDebug[39m]: MaxPool dimensions: input=[8x8x128], output=[4x4x128], pool=[2x2]
+[[32mDebug[39m]: MaxPool input element size: 4 bytes
+[[36mInfo[39m]: MaxPool: Input is fp32, using fp32 computation (pipeline compatibility mode)
+[[36mInfo[39m]: MaxPool fp32 computation complete - 2048 outputs
+[[32mDebug[39m]: Output fp32 range: [0.000000, 1.304890]
+Timer Layer Inference: elapsed=205.729004ms
+Layer 9 output dimensions: 2048 (total: 2048 elements)
+Output dimensions: 2048 (total: 2048 elements)
+Expected file size: 8192 bytes (2048 elements)
+DENSE LAYER DETECTED: Attempting flexible comparison...
+Element counts match (2048), comparing raw data...
+Manual Cosine Similarity: 95.2255% (0.952255)
+[[36mInfo[39m]: Reset calibration state: conv_layer_count = 0
+[[36mInfo[39m]: Set calibration mode: individual-tests
+[[36mInfo[39m]: Reset dense calibration state: dense_layer_count = 0
+[[36mInfo[39m]: Set dense calibration mode: individual-tests
+[[36mInfo[39m]: 
+--- Running Layer Test 10---
+Opened binary file data/image_0.bin
+[[36mInfo[39m]: Processing layer: conv2d (dims: 60x60x32)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 419.308868 (max_weight = 0.302879)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 96646.406250
+[[32mDebug[39m]: Quantized 12288 input values to int8
+[[32mDebug[39m]: Quantized 2400 weight values to int8
+[[32mDebug[39m]: Quantized 32 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d quantized convolution complete
+
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 1.330779, Avg: 0.039092
+[[32mDebug[39m]: Zero outputs: 79261/115200 (68.802948%)
+[[36mInfo[39m]: Processing layer: conv2d_1 (dims: 56x56x32)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 260.899200 (max_weight = 0.486778)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 60134.597656
+[[32mDebug[39m]: Quantized 115200 input values to int8
+[[32mDebug[39m]: Quantized 25600 weight values to int8
+[[32mDebug[39m]: Quantized 32 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d_1 quantized convolution complete
+
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 2.580461, Avg: 0.034002
+[[32mDebug[39m]: Zero outputs: 86148/100352 (85.845825%)
+[[36mInfo[39m]: MaxPooling: Starting adaptive quantized computation
+[[32mDebug[39m]: MaxPool dimensions: input=[56x56x32], output=[28x28x32], pool=[2x2]
+[[32mDebug[39m]: MaxPool input element size: 4 bytes
+[[36mInfo[39m]: MaxPool: Input is fp32, using fp32 computation (pipeline compatibility mode)
+[[36mInfo[39m]: MaxPool fp32 computation complete - 25088 outputs
+[[32mDebug[39m]: Output fp32 range: [0.000000, 0.778653]
+[[36mInfo[39m]: Processing layer: conv2d_2 (dims: 26x26x64)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 183.425766 (max_weight = 0.692378)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 42277.765625
+[[32mDebug[39m]: Quantized 25088 input values to int8
+[[32mDebug[39m]: Quantized 18432 weight values to int8
+[[32mDebug[39m]: Quantized 64 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d_2 quantized convolution complete
+
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 1.198739, Avg: 0.025876
+[[32mDebug[39m]: Zero outputs: 36378/43264 (84.083763%)
+[[36mInfo[39m]: Processing layer: conv2d_3 (dims: 24x24x64)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 234.513245 (max_weight = 0.541547)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 54052.906250
+[[32mDebug[39m]: Quantized 43264 input values to int8
+[[32mDebug[39m]: Quantized 36864 weight values to int8
+[[32mDebug[39m]: Quantized 64 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d_3 quantized convolution complete
+
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 1.290347, Avg: 0.032897
+[[32mDebug[39m]: Zero outputs: 29940/36864 (81.217445%)
+[[36mInfo[39m]: MaxPooling: Starting adaptive quantized computation
+[[32mDebug[39m]: MaxPool dimensions: input=[24x24x64], output=[12x12x64], pool=[2x2]
+[[32mDebug[39m]: MaxPool input element size: 4 bytes
+[[36mInfo[39m]: MaxPool: Input is fp32, using fp32 computation (pipeline compatibility mode)
+[[36mInfo[39m]: MaxPool fp32 computation complete - 9216 outputs
+[[32mDebug[39m]: Output fp32 range: [0.000000, 0.890997]
+[[36mInfo[39m]: Processing layer: conv2d_4 (dims: 10x10x64)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 236.640457 (max_weight = 0.536679)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 54543.207031
+[[32mDebug[39m]: Quantized 9216 input values to int8
+[[32mDebug[39m]: Quantized 36864 weight values to int8
+[[32mDebug[39m]: Quantized 64 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d_4 quantized convolution complete
+
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 1.859058, Avg: 0.106893
+[[32mDebug[39m]: Zero outputs: 4540/6400 (70.937500%)
+[[36mInfo[39m]: Processing layer: conv2d_5 (dims: 8x8x128)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 248.700119 (max_weight = 0.510655)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 57322.835938
+[[32mDebug[39m]: Quantized 6400 input values to int8
+[[32mDebug[39m]: Quantized 73728 weight values to int8
+[[32mDebug[39m]: Quantized 128 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d_5 quantized convolution complete
+
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 3.241064, Avg: 0.090099
+[[32mDebug[39m]: Zero outputs: 6630/8192 (80.932617%)
+[[36mInfo[39m]: MaxPooling: Starting adaptive quantized computation
+[[32mDebug[39m]: MaxPool dimensions: input=[8x8x128], output=[4x4x128], pool=[2x2]
+[[32mDebug[39m]: MaxPool input element size: 4 bytes
+[[36mInfo[39m]: MaxPool: Input is fp32, using fp32 computation (pipeline compatibility mode)
+[[36mInfo[39m]: MaxPool fp32 computation complete - 2048 outputs
+[[32mDebug[39m]: Output fp32 range: [0.000000, 1.304890]
+[[36mInfo[39m]: Loaded dense calibration stats for 9 layers
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[36mInfo[39m]: Processing dense layer: dense_1 (input_features: 2048, output_features: 256) using _input calibration
+[[32mDebug[39m]: Dense weight scale Sw = 227.767914 (max_weight = 0.557585)
+[[32mDebug[39m]: Using dense input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Dense bias scale Sb = 52498.175781
+[[32mDebug[39m]: Quantized 2048 dense input values to int8
+[[32mDebug[39m]: Quantized 524288 dense weight values to int8
+[[32mDebug[39m]: Quantized 256 dense bias values to int32
+[[32mDebug[39m]: Starting dense computation loops...
+[[36mInfo[39m]: Dense layer dense_1 quantized computation complete
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 6.167586, Avg: 0.447391
+[[32mDebug[39m]: Zero outputs: 198/256 (77.343750%)
+Timer Layer Inference: elapsed=206.873993ms
+Layer 10 output dimensions: 256 (total: 256 elements)
+Output dimensions: 256 (total: 256 elements)
+Expected file size: 1024 bytes (256 elements)
+DENSE LAYER DETECTED: Attempting flexible comparison...
+Element counts match (256), comparing raw data...
+Manual Cosine Similarity: 96.2631% (0.962631)
+[[36mInfo[39m]: Reset calibration state: conv_layer_count = 0
+[[36mInfo[39m]: Set calibration mode: individual-tests
+[[36mInfo[39m]: Reset dense calibration state: dense_layer_count = 0
+[[36mInfo[39m]: Set dense calibration mode: individual-tests
+[[36mInfo[39m]: 
+--- Running Layer Test 11---
+Opened binary file data/image_0.bin
+[[36mInfo[39m]: Processing layer: conv2d (dims: 60x60x32)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 419.308868 (max_weight = 0.302879)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 96646.406250
+[[32mDebug[39m]: Quantized 12288 input values to int8
+[[32mDebug[39m]: Quantized 2400 weight values to int8
+[[32mDebug[39m]: Quantized 32 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d quantized convolution complete
+
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 1.330779, Avg: 0.039092
+[[32mDebug[39m]: Zero outputs: 79261/115200 (68.802948%)
+[[36mInfo[39m]: Processing layer: conv2d_1 (dims: 56x56x32)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 260.899200 (max_weight = 0.486778)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 60134.597656
+[[32mDebug[39m]: Quantized 115200 input values to int8
+[[32mDebug[39m]: Quantized 25600 weight values to int8
+[[32mDebug[39m]: Quantized 32 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d_1 quantized convolution complete
+
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 2.580461, Avg: 0.034002
+[[32mDebug[39m]: Zero outputs: 86148/100352 (85.845825%)
+[[36mInfo[39m]: MaxPooling: Starting adaptive quantized computation
+[[32mDebug[39m]: MaxPool dimensions: input=[56x56x32], output=[28x28x32], pool=[2x2]
+[[32mDebug[39m]: MaxPool input element size: 4 bytes
+[[36mInfo[39m]: MaxPool: Input is fp32, using fp32 computation (pipeline compatibility mode)
+[[36mInfo[39m]: MaxPool fp32 computation complete - 25088 outputs
+[[32mDebug[39m]: Output fp32 range: [0.000000, 0.778653]
+[[36mInfo[39m]: Processing layer: conv2d_2 (dims: 26x26x64)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 183.425766 (max_weight = 0.692378)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 42277.765625
+[[32mDebug[39m]: Quantized 25088 input values to int8
+[[32mDebug[39m]: Quantized 18432 weight values to int8
+[[32mDebug[39m]: Quantized 64 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d_2 quantized convolution complete
+
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 1.198739, Avg: 0.025876
+[[32mDebug[39m]: Zero outputs: 36378/43264 (84.083763%)
+[[36mInfo[39m]: Processing layer: conv2d_3 (dims: 24x24x64)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 234.513245 (max_weight = 0.541547)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 54052.906250
+[[32mDebug[39m]: Quantized 43264 input values to int8
+[[32mDebug[39m]: Quantized 36864 weight values to int8
+[[32mDebug[39m]: Quantized 64 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d_3 quantized convolution complete
+
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 1.290347, Avg: 0.032897
+[[32mDebug[39m]: Zero outputs: 29940/36864 (81.217445%)
+[[36mInfo[39m]: MaxPooling: Starting adaptive quantized computation
+[[32mDebug[39m]: MaxPool dimensions: input=[24x24x64], output=[12x12x64], pool=[2x2]
+[[32mDebug[39m]: MaxPool input element size: 4 bytes
+[[36mInfo[39m]: MaxPool: Input is fp32, using fp32 computation (pipeline compatibility mode)
+[[36mInfo[39m]: MaxPool fp32 computation complete - 9216 outputs
+[[32mDebug[39m]: Output fp32 range: [0.000000, 0.890997]
+[[36mInfo[39m]: Processing layer: conv2d_4 (dims: 10x10x64)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 236.640457 (max_weight = 0.536679)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 54543.207031
+[[32mDebug[39m]: Quantized 9216 input values to int8
+[[32mDebug[39m]: Quantized 36864 weight values to int8
+[[32mDebug[39m]: Quantized 64 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d_4 quantized convolution complete
+
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 1.859058, Avg: 0.106893
+[[32mDebug[39m]: Zero outputs: 4540/6400 (70.937500%)
+[[36mInfo[39m]: Processing layer: conv2d_5 (dims: 8x8x128)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 248.700119 (max_weight = 0.510655)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 57322.835938
+[[32mDebug[39m]: Quantized 6400 input values to int8
+[[32mDebug[39m]: Quantized 73728 weight values to int8
+[[32mDebug[39m]: Quantized 128 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d_5 quantized convolution complete
+
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 3.241064, Avg: 0.090099
+[[32mDebug[39m]: Zero outputs: 6630/8192 (80.932617%)
+[[36mInfo[39m]: MaxPooling: Starting adaptive quantized computation
+[[32mDebug[39m]: MaxPool dimensions: input=[8x8x128], output=[4x4x128], pool=[2x2]
+[[32mDebug[39m]: MaxPool input element size: 4 bytes
+[[36mInfo[39m]: MaxPool: Input is fp32, using fp32 computation (pipeline compatibility mode)
+[[36mInfo[39m]: MaxPool fp32 computation complete - 2048 outputs
+[[32mDebug[39m]: Output fp32 range: [0.000000, 1.304890]
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[36mInfo[39m]: Processing dense layer: dense_1 (input_features: 2048, output_features: 256) using _input calibration
+[[32mDebug[39m]: Dense weight scale Sw = 227.767914 (max_weight = 0.557585)
+[[32mDebug[39m]: Using dense input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Dense bias scale Sb = 52498.175781
+[[32mDebug[39m]: Quantized 2048 dense input values to int8
+[[32mDebug[39m]: Quantized 524288 dense weight values to int8
+[[32mDebug[39m]: Quantized 256 dense bias values to int32
+[[32mDebug[39m]: Starting dense computation loops...
+[[36mInfo[39m]: Dense layer dense_1 quantized computation complete
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 6.167586, Avg: 0.447391
+[[32mDebug[39m]: Zero outputs: 198/256 (77.343750%)
+[[36mInfo[39m]: 
+
+ADAPTIVE: Using runtime-calculated Si=41.183052, zi=-127 (input range: 0.000000 to 6.167586)
+[[36mInfo[39m]: Processing dense layer: dense_2 (input_features: 256, output_features: 200) using ADAPTIVE calibration
+[[32mDebug[39m]: Dense weight scale Sw = 95.912842 (max_weight = 1.324119)
+[[32mDebug[39m]: Using dense input scale Si = 41.183052, zero point zi = -127
+[[32mDebug[39m]: Dense bias scale Sb = 3949.983643
+[[32mDebug[39m]: Quantized 256 dense input values to int8
+[[32mDebug[39m]: Quantized 51200 dense weight values to int8
+[[32mDebug[39m]: Quantized 200 dense bias values to int32
+[[32mDebug[39m]: Starting dense computation loops...
+[[36mInfo[39m]: Dense layer dense_2 quantized computation complete
+[[32mDebug[39m]: Output statistics - Min: -9.238266, Max: 2.439757, Avg: -2.809443
+[[32mDebug[39m]: Zero outputs: 0/200 (0.000000%)
+Timer Layer Inference: elapsed=209.276993ms
+Layer 11 output dimensions: 200 (total: 200 elements)
+Output dimensions: 200 (total: 200 elements)
+Expected file size: 800 bytes (200 elements)
+DENSE LAYER DETECTED: Attempting flexible comparison...
+Element counts match (200), comparing raw data...
+Manual Cosine Similarity: 0.23073% (0.0023073)
+[[36mInfo[39m]: 
+--- Running Inference Test ---
+Opened binary file data/image_0.bin
+Timer Full Inference: elapsed=1104.676025ms
+Opened binary file data/image_0_data/layer_11_output.bin
+Comparing Outputs (Cosine Similarity): True 100%  (1)
+[[36mInfo[39m]: 
+--- Running QUANTIZED Inference Test ---
+[[36mInfo[39m]: Reset calibration state: conv_layer_count = 0
+[[36mInfo[39m]: Set calibration mode: layer-specific
+[[36mInfo[39m]: Reset dense calibration state: dense_layer_count = 0
+[[36mInfo[39m]: Set dense calibration mode: layer-specific
+Opened binary file data/image_0.bin
+[[36mInfo[39m]: Processing layer: conv2d (dims: 60x60x32)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 419.308868 (max_weight = 0.302879)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 96646.406250
+[[32mDebug[39m]: Quantized 12288 input values to int8
+[[32mDebug[39m]: Quantized 2400 weight values to int8
+[[32mDebug[39m]: Quantized 32 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d quantized convolution complete
+
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 1.330779, Avg: 0.039092
+[[32mDebug[39m]: Zero outputs: 79261/115200 (68.802948%)
+[[36mInfo[39m]: Processing layer: conv2d_1 (dims: 56x56x32)
+[[36mInfo[39m]: Using calibration stats: conv2d - Si=33.896912, zi=9
+[[32mDebug[39m]: Weight scale Sw = 260.899200 (max_weight = 0.486778)
+[[32mDebug[39m]: Using calibrated input scale Si = 33.896912, zero point zi = 9
+[[32mDebug[39m]: Bias scale Sb = 8843.676758
+[[32mDebug[39m]: Quantized 115200 input values to int8
+[[32mDebug[39m]: Quantized 25600 weight values to int8
+[[32mDebug[39m]: Quantized 32 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d_1 quantized convolution complete
+
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 2.587611, Avg: 0.034125
+[[32mDebug[39m]: Zero outputs: 86151/100352 (85.848816%)
+[[36mInfo[39m]: MaxPooling: Starting adaptive quantized computation
+[[32mDebug[39m]: MaxPool dimensions: input=[56x56x32], output=[28x28x32], pool=[2x2]
+[[32mDebug[39m]: MaxPool input element size: 4 bytes
+[[36mInfo[39m]: MaxPool: Input is fp32, using fp32 computation (pipeline compatibility mode)
+[[36mInfo[39m]: MaxPool fp32 computation complete - 25088 outputs
+[[32mDebug[39m]: Output fp32 range: [0.000000, 0.752854]
+[[36mInfo[39m]: Processing layer: conv2d_2 (dims: 26x26x64)
+[[36mInfo[39m]: Using calibration stats: conv2d_1 - Si=5.105265, zi=-15
+[[32mDebug[39m]: Weight scale Sw = 183.425766 (max_weight = 0.692378)
+[[32mDebug[39m]: Using calibrated input scale Si = 5.105265, zero point zi = -15
+[[32mDebug[39m]: Bias scale Sb = 936.437073
+[[32mDebug[39m]: Quantized 25088 input values to int8
+[[32mDebug[39m]: Quantized 18432 weight values to int8
+[[32mDebug[39m]: Quantized 64 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d_2 quantized convolution complete
+
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 1.740640, Avg: 0.031372
+[[32mDebug[39m]: Zero outputs: 35874/43264 (82.918823%)
+[[36mInfo[39m]: Processing layer: conv2d_3 (dims: 24x24x64)
+[[36mInfo[39m]: Using calibration stats: conv2d_2 - Si=1.452178, zi=27
+[[32mDebug[39m]: Weight scale Sw = 234.513245 (max_weight = 0.541547)
+[[32mDebug[39m]: Using calibrated input scale Si = 1.452178, zero point zi = 27
+[[32mDebug[39m]: Bias scale Sb = 340.554932
+[[32mDebug[39m]: Quantized 43264 input values to int8
+[[32mDebug[39m]: Quantized 36864 weight values to int8
+[[32mDebug[39m]: Quantized 64 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d_3 quantized convolution complete
+
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 2.214033, Avg: 0.041143
+[[32mDebug[39m]: Zero outputs: 27728/36864 (75.217010%)
+[[36mInfo[39m]: MaxPooling: Starting adaptive quantized computation
+[[32mDebug[39m]: MaxPool dimensions: input=[24x24x64], output=[12x12x64], pool=[2x2]
+[[32mDebug[39m]: MaxPool input element size: 4 bytes
+[[36mInfo[39m]: MaxPool: Input is fp32, using fp32 computation (pipeline compatibility mode)
+[[36mInfo[39m]: MaxPool fp32 computation complete - 9216 outputs
+[[32mDebug[39m]: Output fp32 range: [0.000000, 1.236218]
+[[36mInfo[39m]: Processing layer: conv2d_4 (dims: 10x10x64)
+[[36mInfo[39m]: Using calibration stats: conv2d_3 - Si=0.181733, zi=-31
+[[32mDebug[39m]: Weight scale Sw = 236.640457 (max_weight = 0.536679)
+[[32mDebug[39m]: Using calibrated input scale Si = 0.181733, zero point zi = -31
+[[32mDebug[39m]: Bias scale Sb = 43.005447
+[[32mDebug[39m]: Quantized 9216 input values to int8
+[[32mDebug[39m]: Quantized 36864 weight values to int8
+[[32mDebug[39m]: Quantized 64 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d_4 quantized convolution complete
+
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 0.186023, Avg: 0.033790
+[[32mDebug[39m]: Zero outputs: 3900/6400 (60.937500%)
+[[36mInfo[39m]: Processing layer: conv2d_5 (dims: 8x8x128)
+[[36mInfo[39m]: Using calibration stats: conv2d_4 - Si=0.024994, zi=18
+[[32mDebug[39m]: Weight scale Sw = 248.700119 (max_weight = 0.510655)
+[[32mDebug[39m]: Using calibrated input scale Si = 0.024994, zero point zi = 18
+[[32mDebug[39m]: Bias scale Sb = 6.216023
+[[32mDebug[39m]: Quantized 6400 input values to int8
+[[32mDebug[39m]: Quantized 73728 weight values to int8
+[[32mDebug[39m]: Quantized 128 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d_5 quantized convolution complete
+
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 0.160875, Avg: 0.022623
+[[32mDebug[39m]: Zero outputs: 7040/8192 (85.937500%)
+[[36mInfo[39m]: MaxPooling: Starting adaptive quantized computation
+[[32mDebug[39m]: MaxPool dimensions: input=[8x8x128], output=[4x4x128], pool=[2x2]
+[[32mDebug[39m]: MaxPool input element size: 4 bytes
+[[36mInfo[39m]: MaxPool: Input is fp32, using fp32 computation (pipeline compatibility mode)
+[[36mInfo[39m]: MaxPool fp32 computation complete - 2048 outputs
+[[32mDebug[39m]: Output fp32 range: [0.000000, 0.160875]
+[[36mInfo[39m]: 
+
+ADAPTIVE: Using runtime-calculated Si=1578.869873, zi=-127 (input range: 0.000000 to 0.160875)
+[[36mInfo[39m]: Processing dense layer: dense_1 (input_features: 2048, output_features: 256) using ADAPTIVE calibration
+[[32mDebug[39m]: Dense weight scale Sw = 227.767914 (max_weight = 0.557585)
+[[32mDebug[39m]: Using dense input scale Si = 1578.869873, zero point zi = -127
+[[32mDebug[39m]: Dense bias scale Sb = 359615.906250
+[[32mDebug[39m]: Quantized 2048 dense input values to int8
+[[32mDebug[39m]: Quantized 524288 dense weight values to int8
+[[32mDebug[39m]: Quantized 256 dense bias values to int32
+[[32mDebug[39m]: Starting dense computation loops...
+[[36mInfo[39m]: Dense layer dense_1 quantized computation complete
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 2.352935, Avg: 0.209961
+[[32mDebug[39m]: Zero outputs: 174/256 (67.968750%)
+[[36mInfo[39m]: 
+
+ADAPTIVE: Using runtime-calculated Si=107.950272, zi=-127 (input range: 0.000000 to 2.352935)
+[[36mInfo[39m]: Processing dense layer: dense_2 (input_features: 256, output_features: 200) using ADAPTIVE calibration
+[[32mDebug[39m]: Dense weight scale Sw = 95.912842 (max_weight = 1.324119)
+[[32mDebug[39m]: Using dense input scale Si = 107.950272, zero point zi = -127
+[[32mDebug[39m]: Dense bias scale Sb = 10353.817383
+[[32mDebug[39m]: Quantized 256 dense input values to int8
+[[32mDebug[39m]: Quantized 51200 dense weight values to int8
+[[32mDebug[39m]: Quantized 200 dense bias values to int32
+[[32mDebug[39m]: Starting dense computation loops...
+[[36mInfo[39m]: Dense layer dense_2 quantized computation complete
+[[32mDebug[39m]: Output statistics - Min: -7.081446, Max: 1.367901, Avg: -1.619449
+[[32mDebug[39m]: Zero outputs: 0/200 (0.000000%)
+[DEBUG] Softmax computeQuantized() called (same as naive)
+Timer Quantized Full Inference: elapsed=211.188004ms
+Opened binary file data/image_0_data/layer_11_output.bin
+QUANTIZED vs EXPECTED: Comparing Outputs (Cosine Similarity): False 8.08208%  (0.0808208)
+QUANTIZED vs NAIVE: Comparing Outputs (Cosine Similarity): True 100%  (1)
+
+--- CLASSIFICATION LAYER EVALUATION ---
+Naive Prediction: Class 163
+Quantized Prediction: Class 163
+Prediction Consistency: MATCHED
+
+Naive Confidence: 0.575758%
+Quantized Confidence: 0.575758%
+
+Top-5 Overlap: 5/5 classes match
+Naive Top-5: 163 182 128 1 68 
+Quantized Top-5: 163 182 128 1 68 
+
+KL-Divergence: 0 (lower is better)
+Confidence Difference: 0%
+
+--- PERFORMANCE ASSESSMENT ---
+Same prediction maintained with and without quantization
+Great overlap: Top-5 overlap >= 4/5
+Great result: Very similar probability distributions
+
+
+----- ML::runTests() COMPLETE -----

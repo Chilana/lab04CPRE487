@@ -1,0 +1,382 @@
+[[36mInfo[39m]: --- Building Toy Model ---
+Opened binary file data/model/conv1_weights.bin
+Opened binary file data/model/conv1_biases.bin
+Opened binary file data/model/conv2_weights.bin
+Opened binary file data/model/conv2_biases.bin
+Opened binary file data/model/conv3_weights.bin
+Opened binary file data/model/conv3_biases.bin
+Opened binary file data/model/conv4_weights.bin
+Opened binary file data/model/conv4_biases.bin
+Opened binary file data/model/conv5_weights.bin
+Opened binary file data/model/conv5_biases.bin
+Opened binary file data/model/conv6_weights.bin
+Opened binary file data/model/conv6_biases.bin
+Opened binary file data/model/dense1_weights.bin
+Opened binary file data/model/dense1_biases.bin
+Opened binary file data/model/dense2_weights.bin
+Opened binary file data/model/dense2_biases.bin
+[[36mInfo[39m]: --- Running Basic Test ---
+Opened binary file ./data/image_0.bin
+Comparing image 0 to itself (max error): 1
+Comparing image 0 to itself (T/F within epsilon 0.001): false
+
+Change a value by 0.1 and compare again
+Comparing Outputs (Cosine Similarity): True 99.9993%  (0.999993)
+Change a value by 0.1 and compare again...
+Comparing Outputs (Cosine Similarity): True 99.9981%  (0.999981)
+[[36mInfo[39m]: --- Running All Layer Tests ---
+[[36mInfo[39m]: --- Running Layer Test 0---
+Opened binary file data/image_0.bin
+[[36mInfo[39m]: Loaded calibration stats for 9 layers
+[[36mInfo[39m]: Processing layer: conv2d (dims: 60x60x32)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 419.308868 (max_weight = 0.302879)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 96646.406250
+[[32mDebug[39m]: Quantized 12288 input values to int8
+[[32mDebug[39m]: Quantized 2400 weight values to int8
+[[32mDebug[39m]: Quantized 32 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d quantized convolution complete
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 1.330779, Avg: 0.039092
+[[32mDebug[39m]: Zero outputs: 79261/115200 (68.802948%)
+Timer Layer Inference: elapsed=11.355000ms
+Layer 0 output dimensions: 60 60 32 (total: 115200 elements)
+Output dimensions: 60 60 32 (total: 115200 elements)
+Expected file size: 460800 bytes (115200 elements)
+Opened binary file data/image_0_data/layer_0_output.bin
+Comparing Outputs (Cosine Similarity): True 99.5397%  (0.995397)
+[[36mInfo[39m]: --- Running Layer Test 1---
+Opened binary file data/image_0.bin
+[[36mInfo[39m]: Processing layer: conv2d (dims: 60x60x32)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 419.308868 (max_weight = 0.302879)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 96646.406250
+[[32mDebug[39m]: Quantized 12288 input values to int8
+[[32mDebug[39m]: Quantized 2400 weight values to int8
+[[32mDebug[39m]: Quantized 32 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d quantized convolution complete
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 1.330779, Avg: 0.039092
+[[32mDebug[39m]: Zero outputs: 79261/115200 (68.802948%)
+[[36mInfo[39m]: Processing layer: conv2d_1 (dims: 56x56x32)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 260.899200 (max_weight = 0.486778)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 60134.597656
+[[32mDebug[39m]: Quantized 115200 input values to int8
+[[32mDebug[39m]: Quantized 25600 weight values to int8
+[[32mDebug[39m]: Quantized 32 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d_1 quantized convolution complete
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 2.580461, Avg: 0.034002
+[[32mDebug[39m]: Zero outputs: 86148/100352 (85.845825%)
+Timer Layer Inference: elapsed=112.192001ms
+Layer 1 output dimensions: 56 56 32 (total: 100352 elements)
+Output dimensions: 56 56 32 (total: 100352 elements)
+Expected file size: 401408 bytes (100352 elements)
+Opened binary file data/image_0_data/layer_1_output.bin
+Comparing Outputs (Cosine Similarity): True 99.6066%  (0.996066)
+[[36mInfo[39m]: --- Running Layer Test 2---
+Opened binary file data/image_0.bin
+[[36mInfo[39m]: Processing layer: conv2d (dims: 60x60x32)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 419.308868 (max_weight = 0.302879)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 96646.406250
+[[32mDebug[39m]: Quantized 12288 input values to int8
+[[32mDebug[39m]: Quantized 2400 weight values to int8
+[[32mDebug[39m]: Quantized 32 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d quantized convolution complete
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 1.330779, Avg: 0.039092
+[[32mDebug[39m]: Zero outputs: 79261/115200 (68.802948%)
+[[36mInfo[39m]: Processing layer: conv2d_1 (dims: 56x56x32)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 260.899200 (max_weight = 0.486778)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 60134.597656
+[[32mDebug[39m]: Quantized 115200 input values to int8
+[[32mDebug[39m]: Quantized 25600 weight values to int8
+[[32mDebug[39m]: Quantized 32 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d_1 quantized convolution complete
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 2.580461, Avg: 0.034002
+[[32mDebug[39m]: Zero outputs: 86148/100352 (85.845825%)
+[[36mInfo[39m]: MaxPooling: Starting true quantized computation (int8 operations only)
+[[32mDebug[39m]: MaxPool dimensions: input=[56x56x32], output=[28x28x32], pool=[2x2]
+Layer 2 test failed: Accessing LayerData with incorrect element size in `` (28, 28, 32), accessed by size 1, but elementSize is 4.
+
+[[36mInfo[39m]: --- Running Layer Test 3---
+Opened binary file data/image_0.bin
+[[36mInfo[39m]: Processing layer: conv2d (dims: 60x60x32)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 419.308868 (max_weight = 0.302879)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 96646.406250
+[[32mDebug[39m]: Quantized 12288 input values to int8
+[[32mDebug[39m]: Quantized 2400 weight values to int8
+[[32mDebug[39m]: Quantized 32 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d quantized convolution complete
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 1.330779, Avg: 0.039092
+[[32mDebug[39m]: Zero outputs: 79261/115200 (68.802948%)
+[[36mInfo[39m]: Processing layer: conv2d_1 (dims: 56x56x32)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 260.899200 (max_weight = 0.486778)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 60134.597656
+[[32mDebug[39m]: Quantized 115200 input values to int8
+[[32mDebug[39m]: Quantized 25600 weight values to int8
+[[32mDebug[39m]: Quantized 32 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d_1 quantized convolution complete
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 2.580461, Avg: 0.034002
+[[32mDebug[39m]: Zero outputs: 86148/100352 (85.845825%)
+[[36mInfo[39m]: MaxPooling: Starting true quantized computation (int8 operations only)
+[[32mDebug[39m]: MaxPool dimensions: input=[56x56x32], output=[28x28x32], pool=[2x2]
+Layer 3 test failed: Accessing LayerData with incorrect element size in `` (28, 28, 32), accessed by size 1, but elementSize is 4.
+
+[[36mInfo[39m]: --- Running Layer Test 4---
+Opened binary file data/image_0.bin
+[[36mInfo[39m]: Processing layer: conv2d (dims: 60x60x32)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 419.308868 (max_weight = 0.302879)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 96646.406250
+[[32mDebug[39m]: Quantized 12288 input values to int8
+[[32mDebug[39m]: Quantized 2400 weight values to int8
+[[32mDebug[39m]: Quantized 32 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d quantized convolution complete
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 1.330779, Avg: 0.039092
+[[32mDebug[39m]: Zero outputs: 79261/115200 (68.802948%)
+[[36mInfo[39m]: Processing layer: conv2d_1 (dims: 56x56x32)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 260.899200 (max_weight = 0.486778)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 60134.597656
+[[32mDebug[39m]: Quantized 115200 input values to int8
+[[32mDebug[39m]: Quantized 25600 weight values to int8
+[[32mDebug[39m]: Quantized 32 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d_1 quantized convolution complete
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 2.580461, Avg: 0.034002
+[[32mDebug[39m]: Zero outputs: 86148/100352 (85.845825%)
+[[36mInfo[39m]: MaxPooling: Starting true quantized computation (int8 operations only)
+[[32mDebug[39m]: MaxPool dimensions: input=[56x56x32], output=[28x28x32], pool=[2x2]
+Layer 4 test failed: Accessing LayerData with incorrect element size in `` (28, 28, 32), accessed by size 1, but elementSize is 4.
+
+[[36mInfo[39m]: --- Running Layer Test 5---
+Opened binary file data/image_0.bin
+[[36mInfo[39m]: Processing layer: conv2d (dims: 60x60x32)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 419.308868 (max_weight = 0.302879)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 96646.406250
+[[32mDebug[39m]: Quantized 12288 input values to int8
+[[32mDebug[39m]: Quantized 2400 weight values to int8
+[[32mDebug[39m]: Quantized 32 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d quantized convolution complete
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 1.330779, Avg: 0.039092
+[[32mDebug[39m]: Zero outputs: 79261/115200 (68.802948%)
+[[36mInfo[39m]: Processing layer: conv2d_1 (dims: 56x56x32)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 260.899200 (max_weight = 0.486778)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 60134.597656
+[[32mDebug[39m]: Quantized 115200 input values to int8
+[[32mDebug[39m]: Quantized 25600 weight values to int8
+[[32mDebug[39m]: Quantized 32 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d_1 quantized convolution complete
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 2.580461, Avg: 0.034002
+[[32mDebug[39m]: Zero outputs: 86148/100352 (85.845825%)
+[[36mInfo[39m]: MaxPooling: Starting true quantized computation (int8 operations only)
+[[32mDebug[39m]: MaxPool dimensions: input=[56x56x32], output=[28x28x32], pool=[2x2]
+Layer 5 test failed: Accessing LayerData with incorrect element size in `` (28, 28, 32), accessed by size 1, but elementSize is 4.
+
+[[36mInfo[39m]: --- Running Layer Test 6---
+Opened binary file data/image_0.bin
+[[36mInfo[39m]: Processing layer: conv2d (dims: 60x60x32)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 419.308868 (max_weight = 0.302879)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 96646.406250
+[[32mDebug[39m]: Quantized 12288 input values to int8
+[[32mDebug[39m]: Quantized 2400 weight values to int8
+[[32mDebug[39m]: Quantized 32 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d quantized convolution complete
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 1.330779, Avg: 0.039092
+[[32mDebug[39m]: Zero outputs: 79261/115200 (68.802948%)
+[[36mInfo[39m]: Processing layer: conv2d_1 (dims: 56x56x32)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 260.899200 (max_weight = 0.486778)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 60134.597656
+[[32mDebug[39m]: Quantized 115200 input values to int8
+[[32mDebug[39m]: Quantized 25600 weight values to int8
+[[32mDebug[39m]: Quantized 32 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d_1 quantized convolution complete
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 2.580461, Avg: 0.034002
+[[32mDebug[39m]: Zero outputs: 86148/100352 (85.845825%)
+[[36mInfo[39m]: MaxPooling: Starting true quantized computation (int8 operations only)
+[[32mDebug[39m]: MaxPool dimensions: input=[56x56x32], output=[28x28x32], pool=[2x2]
+Layer 6 test failed: Accessing LayerData with incorrect element size in `` (28, 28, 32), accessed by size 1, but elementSize is 4.
+
+[[36mInfo[39m]: --- Running Layer Test 7---
+Opened binary file data/image_0.bin
+[[36mInfo[39m]: Processing layer: conv2d (dims: 60x60x32)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 419.308868 (max_weight = 0.302879)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 96646.406250
+[[32mDebug[39m]: Quantized 12288 input values to int8
+[[32mDebug[39m]: Quantized 2400 weight values to int8
+[[32mDebug[39m]: Quantized 32 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d quantized convolution complete
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 1.330779, Avg: 0.039092
+[[32mDebug[39m]: Zero outputs: 79261/115200 (68.802948%)
+[[36mInfo[39m]: Processing layer: conv2d_1 (dims: 56x56x32)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 260.899200 (max_weight = 0.486778)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 60134.597656
+[[32mDebug[39m]: Quantized 115200 input values to int8
+[[32mDebug[39m]: Quantized 25600 weight values to int8
+[[32mDebug[39m]: Quantized 32 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d_1 quantized convolution complete
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 2.580461, Avg: 0.034002
+[[32mDebug[39m]: Zero outputs: 86148/100352 (85.845825%)
+[[36mInfo[39m]: MaxPooling: Starting true quantized computation (int8 operations only)
+[[32mDebug[39m]: MaxPool dimensions: input=[56x56x32], output=[28x28x32], pool=[2x2]
+Layer 7 test failed: Accessing LayerData with incorrect element size in `` (28, 28, 32), accessed by size 1, but elementSize is 4.
+
+[[36mInfo[39m]: --- Running Layer Test 8---
+Opened binary file data/image_0.bin
+[[36mInfo[39m]: Processing layer: conv2d (dims: 60x60x32)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 419.308868 (max_weight = 0.302879)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 96646.406250
+[[32mDebug[39m]: Quantized 12288 input values to int8
+[[32mDebug[39m]: Quantized 2400 weight values to int8
+[[32mDebug[39m]: Quantized 32 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d quantized convolution complete
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 1.330779, Avg: 0.039092
+[[32mDebug[39m]: Zero outputs: 79261/115200 (68.802948%)
+[[36mInfo[39m]: Processing layer: conv2d_1 (dims: 56x56x32)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 260.899200 (max_weight = 0.486778)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 60134.597656
+[[32mDebug[39m]: Quantized 115200 input values to int8
+[[32mDebug[39m]: Quantized 25600 weight values to int8
+[[32mDebug[39m]: Quantized 32 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d_1 quantized convolution complete
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 2.580461, Avg: 0.034002
+[[32mDebug[39m]: Zero outputs: 86148/100352 (85.845825%)
+[[36mInfo[39m]: MaxPooling: Starting true quantized computation (int8 operations only)
+[[32mDebug[39m]: MaxPool dimensions: input=[56x56x32], output=[28x28x32], pool=[2x2]
+Layer 8 test failed: Accessing LayerData with incorrect element size in `` (28, 28, 32), accessed by size 1, but elementSize is 4.
+
+[[36mInfo[39m]: --- Running Layer Test 9---
+Opened binary file data/image_0.bin
+[[36mInfo[39m]: Processing layer: conv2d (dims: 60x60x32)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 419.308868 (max_weight = 0.302879)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 96646.406250
+[[32mDebug[39m]: Quantized 12288 input values to int8
+[[32mDebug[39m]: Quantized 2400 weight values to int8
+[[32mDebug[39m]: Quantized 32 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d quantized convolution complete
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 1.330779, Avg: 0.039092
+[[32mDebug[39m]: Zero outputs: 79261/115200 (68.802948%)
+[[36mInfo[39m]: Processing layer: conv2d_1 (dims: 56x56x32)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 260.899200 (max_weight = 0.486778)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 60134.597656
+[[32mDebug[39m]: Quantized 115200 input values to int8
+[[32mDebug[39m]: Quantized 25600 weight values to int8
+[[32mDebug[39m]: Quantized 32 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d_1 quantized convolution complete
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 2.580461, Avg: 0.034002
+[[32mDebug[39m]: Zero outputs: 86148/100352 (85.845825%)
+[[36mInfo[39m]: MaxPooling: Starting true quantized computation (int8 operations only)
+[[32mDebug[39m]: MaxPool dimensions: input=[56x56x32], output=[28x28x32], pool=[2x2]
+Layer 9 test failed: Accessing LayerData with incorrect element size in `` (28, 28, 32), accessed by size 1, but elementSize is 4.
+
+[[36mInfo[39m]: --- Running Layer Test 10---
+Opened binary file data/image_0.bin
+[[36mInfo[39m]: Processing layer: conv2d (dims: 60x60x32)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 419.308868 (max_weight = 0.302879)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 96646.406250
+[[32mDebug[39m]: Quantized 12288 input values to int8
+[[32mDebug[39m]: Quantized 2400 weight values to int8
+[[32mDebug[39m]: Quantized 32 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d quantized convolution complete
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 1.330779, Avg: 0.039092
+[[32mDebug[39m]: Zero outputs: 79261/115200 (68.802948%)
+[[36mInfo[39m]: Processing layer: conv2d_1 (dims: 56x56x32)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 260.899200 (max_weight = 0.486778)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 60134.597656
+[[32mDebug[39m]: Quantized 115200 input values to int8
+[[32mDebug[39m]: Quantized 25600 weight values to int8
+[[32mDebug[39m]: Quantized 32 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d_1 quantized convolution complete
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 2.580461, Avg: 0.034002
+[[32mDebug[39m]: Zero outputs: 86148/100352 (85.845825%)
+[[36mInfo[39m]: MaxPooling: Starting true quantized computation (int8 operations only)
+[[32mDebug[39m]: MaxPool dimensions: input=[56x56x32], output=[28x28x32], pool=[2x2]
+Layer 10 test failed: Accessing LayerData with incorrect element size in `` (28, 28, 32), accessed by size 1, but elementSize is 4.
+
+[[36mInfo[39m]: --- Running Layer Test 11---
+Opened binary file data/image_0.bin
+[[36mInfo[39m]: Processing layer: conv2d (dims: 60x60x32)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 419.308868 (max_weight = 0.302879)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 96646.406250
+[[32mDebug[39m]: Quantized 12288 input values to int8
+[[32mDebug[39m]: Quantized 2400 weight values to int8
+[[32mDebug[39m]: Quantized 32 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d quantized convolution complete
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 1.330779, Avg: 0.039092
+[[32mDebug[39m]: Zero outputs: 79261/115200 (68.802948%)
+[[36mInfo[39m]: Processing layer: conv2d_1 (dims: 56x56x32)
+[[36mInfo[39m]: Using calibration stats: _input - Si=230.489777, zi=-103
+[[32mDebug[39m]: Weight scale Sw = 260.899200 (max_weight = 0.486778)
+[[32mDebug[39m]: Using calibrated input scale Si = 230.489777, zero point zi = -103
+[[32mDebug[39m]: Bias scale Sb = 60134.597656
+[[32mDebug[39m]: Quantized 115200 input values to int8
+[[32mDebug[39m]: Quantized 25600 weight values to int8
+[[32mDebug[39m]: Quantized 32 bias values to int32
+[[32mDebug[39m]: Starting convolution loops...
+[[36mInfo[39m]: Layer conv2d_1 quantized convolution complete
+[[32mDebug[39m]: Output statistics - Min: 0.000000, Max: 2.580461, Avg: 0.034002
+[[32mDebug[39m]: Zero outputs: 86148/100352 (85.845825%)
+[[36mInfo[39m]: MaxPooling: Starting true quantized computation (int8 operations only)
+[[32mDebug[39m]: MaxPool dimensions: input=[56x56x32], output=[28x28x32], pool=[2x2]
+Layer 11 test failed: Accessing LayerData with incorrect element size in `` (28, 28, 32), accessed by size 1, but elementSize is 4.
+
+[[36mInfo[39m]: --- Running Inference Test ---
+Opened binary file data/image_0.bin
