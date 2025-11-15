@@ -5,6 +5,7 @@
 #include <algorithm>    // ADDED THIS for std::sort, std::max
 #include <cmath>        // ADDED THIS for std::exp, std::log, std::sqrt
 #include <fstream>      // ADDED THIS for std::ifstream
+#include <unordered_map> // For std::unordered_map (HashMap)
 
 #include "Config.h"
 #include "Model.h"
@@ -36,6 +37,12 @@
 
 namespace ML {
 
+
+std::unordered_map<std::string, int> class_labels;
+
+// Forward declarations
+int getMaxIndex(const LayerData& data);
+
 // Build our ML toy model
 Model buildToyModel(const Path modelPath) {
     Model model;
@@ -47,8 +54,8 @@ Model buildToyModel(const Path modelPath) {
     model.addLayer<ConvolutionalLayer>(
         LayerParams{sizeof(fp32), {64, 64, 3}},                                    // Input Data
         LayerParams{sizeof(fp32), {60, 60, 32}},                                   // Output Data
-        LayerParams{sizeof(fp32), {5, 5, 3, 32}, modelPath / "conv1_weights.bin"}, // Weights
-        LayerParams{sizeof(fp32), {32}, modelPath / "conv1_biases.bin"}            // Bias
+        LayerParams{sizeof(fp32), {5, 5, 3, 32}, modelPath / "conv6_weights.bin"}, // Weights
+        LayerParams{sizeof(fp32), {32}, modelPath / "conv6_biases.bin"}            // Bias
     );
 
     // --- Conv 2: L2 ---
@@ -57,8 +64,8 @@ Model buildToyModel(const Path modelPath) {
     model.addLayer<ConvolutionalLayer>(
         LayerParams{sizeof(fp32), {60, 60, 32}},                                   // Input Data
         LayerParams{sizeof(fp32), {56, 56, 32}},                                   // Output Data
-        LayerParams{sizeof(fp32), {5, 5, 32, 32}, modelPath / "conv2_weights.bin"}, // Weights
-        LayerParams{sizeof(fp32), {32}, modelPath / "conv2_biases.bin"}            // Bias
+        LayerParams{sizeof(fp32), {5, 5, 32, 32}, modelPath / "conv1_weights.bin"}, // Weights
+        LayerParams{sizeof(fp32), {32}, modelPath / "conv1_biases.bin"}            // Bias
     );
 
     // --- MPL 1: L3 ---
@@ -76,8 +83,8 @@ Model buildToyModel(const Path modelPath) {
     model.addLayer<ConvolutionalLayer>(
         LayerParams{sizeof(fp32), {28, 28, 32}},                                   // Input Data
         LayerParams{sizeof(fp32), {26, 26, 64}},                                   // Output Data
-        LayerParams{sizeof(fp32), {3, 3, 32, 64}, modelPath / "conv3_weights.bin"}, // Weights
-        LayerParams{sizeof(fp32), {64}, modelPath / "conv3_biases.bin"}            // Bias
+        LayerParams{sizeof(fp32), {3, 3, 32, 64}, modelPath / "conv2_weights.bin"}, // Weights
+        LayerParams{sizeof(fp32), {64}, modelPath / "conv2_biases.bin"}            // Bias
     );
 
     // --- Conv 4: L5 ---
@@ -86,8 +93,8 @@ Model buildToyModel(const Path modelPath) {
     model.addLayer<ConvolutionalLayer>(
         LayerParams{sizeof(fp32), {26, 26, 64}},                                   // Input Data
         LayerParams{sizeof(fp32), {24, 24, 64}},                                   // Output Data
-        LayerParams{sizeof(fp32), {3, 3, 64, 64}, modelPath / "conv4_weights.bin"}, // Weights
-        LayerParams{sizeof(fp32), {64}, modelPath / "conv4_biases.bin"}            // Bias
+        LayerParams{sizeof(fp32), {3, 3, 64, 64}, modelPath / "conv3_weights.bin"}, // Weights
+        LayerParams{sizeof(fp32), {64}, modelPath / "conv3_biases.bin"}            // Bias
     );
 
     // --- MPL 2: L6 ---
@@ -105,8 +112,8 @@ Model buildToyModel(const Path modelPath) {
     model.addLayer<ConvolutionalLayer>(
         LayerParams{sizeof(fp32), {12, 12, 64}},                                   // Input Data
         LayerParams{sizeof(fp32), {10, 10, 64}},                                   // Output Data
-        LayerParams{sizeof(fp32), {3, 3, 64, 64}, modelPath / "conv5_weights.bin"}, // Weights
-        LayerParams{sizeof(fp32), {64}, modelPath / "conv5_biases.bin"}            // Bias
+        LayerParams{sizeof(fp32), {3, 3, 64, 64}, modelPath / "conv4_weights.bin"}, // Weights
+        LayerParams{sizeof(fp32), {64}, modelPath / "conv4_biases.bin"}            // Bias
     );
 
     // --- Conv 6: L8 ---
@@ -115,8 +122,8 @@ Model buildToyModel(const Path modelPath) {
     model.addLayer<ConvolutionalLayer>(
         LayerParams{sizeof(fp32), {10, 10, 64}},                                   // Input Data
         LayerParams{sizeof(fp32), {8, 8, 128}},                                    // Output Data
-        LayerParams{sizeof(fp32), {3, 3, 64, 128}, modelPath / "conv6_weights.bin"}, // Weights
-        LayerParams{sizeof(fp32), {128}, modelPath / "conv6_biases.bin"}           // Bias
+        LayerParams{sizeof(fp32), {3, 3, 64, 128}, modelPath / "conv5_weights.bin"}, // Weights
+        LayerParams{sizeof(fp32), {128}, modelPath / "conv5_biases.bin"}           // Bias
     );
 
     // --- MPL 3: L9 ---
@@ -142,8 +149,8 @@ Model buildToyModel(const Path modelPath) {
     model.addLayer<DenseLayer>(
         LayerParams{sizeof(fp32), {2048}},                                         // Input Data (flattened)
         LayerParams{sizeof(fp32), {256}},                                          // Output Data
-        LayerParams{sizeof(fp32), {2048, 256}, modelPath / "dense1_weights.bin"}, // Weights
-        LayerParams{sizeof(fp32), {256}, modelPath / "dense1_biases.bin"}         // Bias
+        LayerParams{sizeof(fp32), {2048, 256}, modelPath / "dense2_weights.bin"}, // Weights
+        LayerParams{sizeof(fp32), {256}, modelPath / "dense2_biases.bin"}         // Bias
     );
 
     // --- Dense 2: L12 ---
@@ -152,8 +159,8 @@ Model buildToyModel(const Path modelPath) {
     model.addLayer<DenseLayer>(
         LayerParams{sizeof(fp32), {256}},                                          // Input Data
         LayerParams{sizeof(fp32), {200}},                                          // Output Data
-        LayerParams{sizeof(fp32), {256, 200}, modelPath / "dense2_weights.bin"},  // Weights
-        LayerParams{sizeof(fp32), {200}, modelPath / "dense2_biases.bin"}         // Bias
+        LayerParams{sizeof(fp32), {256, 200}, modelPath / "dense1_weights.bin"},  // Weights
+        LayerParams{sizeof(fp32), {200}, modelPath / "dense1_biases.bin"}         // Bias
     );
 
     // --- Softmax 1: L13 ---
@@ -194,6 +201,10 @@ void runBasicTest(const Model& model, const Path& basePath) {
 
     // Compare Images
     img.compareWithinPrint<fp32>(imgCopy);
+    
+    // Free memory
+    img.freeData();
+    imgCopy.freeData();
 }
 
 void runLayerTest(const std::size_t layerNum, const Model& model, const Path& basePath, int imageIndex) {
@@ -318,13 +329,20 @@ void runLayerTest(const std::size_t layerNum, const Model& model, const Path& ba
         
         // Compare the outputs
         output->compareWithinPrint<fp32>(expected);
+        
+        // Free memory
+        expected.freeData();
     } catch (const std::exception& e) {
         std::cout << "Layer " << layerNum << " test failed: " << e.what() << std::endl;
     }
+    
+    // Note: img will be automatically freed when it goes out of scope
 }
 
 void runInferenceTest(const Model& model, const Path& basePath) {
-    for(int i = 0; i < 3; i++) {
+    int correct_classifications = 0;
+    
+    for(int i = 0; i < 10; i++) {
         logInfo("\n--- Running Inference Test ---");
 
         // Load the input image
@@ -341,14 +359,40 @@ void runInferenceTest(const Model& model, const Path& basePath) {
         // Compare against the final layer output (layer 11 for our 12-layer model, 0-indexed)
         // The model has 13 layers (0-12), so the final output should be layer_11_output.bin
         try {
-            LayerData expected(model.getOutputLayer().getOutputParams(), basePath / "image_0_data" / "layer_11_output.bin");
+            std::string imagedata = "image_" + std::to_string(i) + "_data";
+            LayerData expected(model.getOutputLayer().getOutputParams(), basePath / imagedata.c_str() / "layer_11_output.bin");
             expected.loadData();
+            
+            // Get predicted classes (argmax)
+            int our_prediction = getMaxIndex(output);
+            int expected_prediction = getMaxIndex(expected);
+            bool match = (our_prediction == expected_prediction);
+            
+            if (match) correct_classifications++;
+            
+            // Show classification comparison
+            std::cout << "Image " << i << ": Our Class=" << our_prediction 
+                      << ", Expected Class=" << expected_prediction 
+                      << " [" << (match ? "✓ MATCH" : "✗ DIFFER") << "]" << std::endl;
+            
+            // Also show cosine similarity for reference
+            std::cout << "  Cosine Similarity: ";
             output.compareWithinPrint<fp32>(expected);
+            
+            expected.freeData();
         } catch (const std::exception& e) {
             std::cout << "Full inference test failed: " << e.what() << std::endl;
             std::cout << "Note: Expected final layer output file may not exist." << std::endl;
         }
+        
+        // Free input image memory after each iteration
+        img.freeData();
     }
+    
+    std::cout << "\n=== NAIVE INFERENCE SUMMARY ===" << std::endl;
+    std::cout << "Classification Accuracy: " << correct_classifications << "/10 ("
+              << (correct_classifications * 10.0f) << "%)" << std::endl;
+    std::cout << "================================\n" << std::endl;
 }
 
 // =============================================================================
@@ -536,7 +580,7 @@ fp32 calculateKLDivergence(const std::vector<fp32>& p, const std::vector<fp32>& 
 
 // Main classification evaluation function
 void evaluateClassificationPerformance(const LayerData& naive_output,
-                                     const LayerData& quantized_output) {
+                                     const LayerData& quantized_output, int imageIndex) {
     
     std::cout << "\n--- CLASSIFICATION LAYER EVALUATION ---" << std::endl;
     
@@ -544,7 +588,10 @@ void evaluateClassificationPerformance(const LayerData& naive_output,
     int naive_pred = getMaxIndex(naive_output);
     int quantized_pred = getMaxIndex(quantized_output);
     bool same_prediction = (naive_pred == quantized_pred);
-    
+
+
+    std::cout << class_labels[std::to_string(imageIndex)] << " (Image Index: " << imageIndex << ") to" << quantized_pred << "\n";
+
     std::cout << "Naive Prediction: Class " << naive_pred << std::endl;
     std::cout << "Quantized Prediction: Class " << quantized_pred << std::endl;
     std::cout << "Prediction Consistency: " << (same_prediction ? "MATCHED" : "ERROR: DIFFERENT PREDICTION THAN NAIVE (wrong prediction consistency)") << std::endl;
@@ -596,7 +643,10 @@ void evaluateClassificationPerformance(const LayerData& naive_output,
 
 
 void runQuantizedInferenceTest(const Model& model, const Path& basePath) {
-    for(int i = 0; i < 3; i++) {
+    int correct_vs_expected = 0;
+    int correct_vs_naive = 0;
+    
+    for(int i = 0; i < 10; i++) {
         logInfo("\n--- Running QUANTIZED Inference Test ---");
 
         // Added by BibidhB: Set to full inference chain mode and reset counter
@@ -616,34 +666,65 @@ void runQuantizedInferenceTest(const Model& model, const Path& basePath) {
 
         // Compare against the final layer output (layer 11 for our 12-layer model, 0-indexed)
         try {
-            LayerData expected(model.getOutputLayer().getOutputParams(), basePath / "image_0_data" / "layer_11_output.bin");
+            std::string imagedata = "image_" + std::to_string(i) + "_data";
+            LayerData expected(model.getOutputLayer().getOutputParams(), basePath / imagedata.c_str() / "layer_11_output.bin");
             expected.loadData();
-            std::cout << "QUANTIZED vs EXPECTED: ";
+            
+            // Get predicted classes
+            int quantized_prediction = getMaxIndex(output);
+            int expected_prediction = getMaxIndex(expected);
+            bool match_expected = (quantized_prediction == expected_prediction);
+            
+            if (match_expected) correct_vs_expected++;
+            
+            std::cout << "QUANTIZED vs EXPECTED: Class " << quantized_prediction 
+                      << " vs " << expected_prediction
+                      << " [" << (match_expected ? "✓ MATCH" : "✗ DIFFER") << "]" << std::endl;
+            std::cout << "  Cosine Similarity: ";
             output.compareWithinPrint<fp32>(expected);
+            
+            expected.freeData();
         } catch (const std::exception& e) {
             std::cout << "Quantized inference test failed: " << e.what() << std::endl;
         }
         
         // Also compare quantized vs naive to see the difference
         const LayerData& naiveOutput = model.inference(img, Layer::InfType::NAIVE);
-        std::cout << "QUANTIZED vs NAIVE: ";
-        output.compareWithinPrint<fp32>(naiveOutput);
-
         
+        int quantized_prediction = getMaxIndex(output);
+        int naive_prediction = getMaxIndex(naiveOutput);
+        bool match_naive = (quantized_prediction == naive_prediction);
+        
+        if (match_naive) correct_vs_naive++;
+        
+        std::cout << "QUANTIZED vs NAIVE: Class " << quantized_prediction 
+                  << " vs " << naive_prediction
+                  << " [" << (match_naive ? "✓ MATCH" : "✗ DIFFER") << "]" << std::endl;
+        std::cout << "  Cosine Similarity: ";
+        output.compareWithinPrint<fp32>(naiveOutput);
 
         // Added by BibidhB: Add classification performance evaluation
         // To support accuracy numbers instead of just cosine similarity
-        evaluateClassificationPerformance(naiveOutput, output);
-
+        evaluateClassificationPerformance(naiveOutput, output, i);
+        
+        // Free input image memory after each iteration
+        img.freeData();
     }
+    
+    std::cout << "\n=== QUANTIZED INFERENCE SUMMARY ===" << std::endl;
+    std::cout << "Quantized vs Expected Accuracy: " << correct_vs_expected << "/10 ("
+              << (correct_vs_expected * 10.0f) << "%)" << std::endl;
+    std::cout << "Quantized vs Naive Accuracy: " << correct_vs_naive << "/10 ("
+              << (correct_vs_naive * 10.0f) << "%)" << std::endl;
+    std::cout << "===================================\n" << std::endl;
 }
 
 void runAllLayerTests(const Model& model, const Path& basePath) {
     logInfo("\n--- Running All Layer Tests ---");
     
     // Test all layers to see complete verification results
-    for(int i = 0; i < 3; i++) {
-        logInfo("\n For image 1 \n");
+    for(int i = 0; i < 1000; i++) {
+        logInfo("\n For image " + std::to_string(i) + " \n");
         for (std::size_t layerNum = 0; layerNum <= 11; ++layerNum) {
             runLayerTest(layerNum, model, basePath, i);
         }
@@ -662,7 +743,7 @@ void runTests() {
     runBasicTest(model, basePath);
 
     // Run all layer tests to verify tensor shapes
-     runAllLayerTests(model, basePath);
+    // runAllLayerTests(model, basePath);
 
     // Run an end-to-end inference test
     runInferenceTest(model, basePath);
@@ -678,12 +759,91 @@ void runTests() {
     std::cout << "\n\n----- ML::runTests() COMPLETE -----\n";
 }
 
+static bool class_labels_loaded = false;
+
+
+void loadClassJson() {
+
+
+
+    if (class_labels_loaded) return;
+
+    std::string path = "/home/chilanaa/lab04/image_class_map.json";
+
+    std::ifstream file(path);
+    if (!file.is_open()) {
+        logError("Failed to open class labels file: " + path);
+        return;
+    }
+
+    std::string line, content;
+    while (std::getline(file, line)) {
+        content += line;
+    }
+    file.close();
+
+    try {
+        std::size_t pos = 0;
+        int loaded = 0;
+
+        while (true) {
+            // find key string
+            pos = content.find('"', pos);
+            if (pos == std::string::npos) break;
+            std::size_t keyStart = pos + 1;
+            std::size_t keyEnd = content.find('"', keyStart);
+            if (keyEnd == std::string::npos) break;
+            std::string key = content.substr(keyStart, keyEnd - keyStart);
+
+            // find colon after key
+            pos = content.find(':', keyEnd);
+            if (pos == std::string::npos) break;
+            ++pos;
+
+            // skip whitespace
+            while (pos < content.size() && (content[pos] == ' ' || content[pos] == '\n' || content[pos] == '\r' || content[pos] == '\t')) ++pos;
+            if (pos >= content.size()) break;
+
+            // parse value (number or quoted number)
+            int value = 0;
+            if (content[pos] == '"') {
+                std::size_t valStart = pos + 1;
+                std::size_t valEnd = content.find('"', valStart);
+                if (valEnd == std::string::npos) break;
+                value = std::stoi(content.substr(valStart, valEnd - valStart));
+                pos = valEnd + 1;
+            } else {
+                std::size_t valEnd = pos;
+                if (valEnd < content.size() && content[valEnd] == '-') ++valEnd;
+                while (valEnd < content.size() && content[valEnd] >= '0' && content[valEnd] <= '9') ++valEnd;
+                if (valEnd == pos) break;
+                value = std::stoi(content.substr(pos, valEnd - pos));
+                pos = valEnd;
+            }
+
+            // insert into hashmap
+            class_labels[key] = value;
+            ++loaded;
+        }
+
+        class_labels_loaded = true;
+        logInfo("Loaded " + std::to_string(loaded) + " class labels from " + path);
+    } catch (const std::exception& e) {
+        logError(std::string("Failed to parse class labels JSON: ") + e.what());
+    }
+
+
+}
+
 } // namespace ML
 
 #ifdef ZEDBOARD
 extern "C"
 int main() {
     try {
+
+        ML::loadClassJson();
+
         static FATFS fatfs;
         if (f_mount(&fatfs, "/", 1) != FR_OK) {
             throw std::runtime_error("Failed to mount SD card. Is it plugged in?");
@@ -697,6 +857,8 @@ int main() {
 }
 #else
 int main() {
+
+    ML::loadClassJson();
     ML::runTests();
 }
 #endif

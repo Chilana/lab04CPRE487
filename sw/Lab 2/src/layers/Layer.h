@@ -217,7 +217,10 @@ inline void LayerData::loadData(Path filePath) {
     if (filePath.empty()) throw std::runtime_error("No file path given for required layer data to load from");
 
     // If it has not already been allocated, allocate it
-    allocData();
+    // Note: We still call allocData even if already allocated to ensure buffer exists
+    if (!data) {
+        allocData();
+    }
 
     // Open our file and check for issues
 #ifdef ZEDBOARD
@@ -329,7 +332,8 @@ template <typename T> float LayerData::compare(const LayerData& other) const {
         std::cout << "Zero Magnitude Vector Comparison" << std::endl;
     }
     else {
-        cosine_similarity = dot_product / (std::max(a_magnitude_sq, b_magnitude_sq));
+        // Fixed: Use proper cosine similarity formula: dot(a,b) / (||a|| * ||b||)
+        cosine_similarity = dot_product / (std::sqrt(a_magnitude_sq) * std::sqrt(b_magnitude_sq));
     }
     
     return cosine_similarity;
@@ -337,7 +341,9 @@ template <typename T> float LayerData::compare(const LayerData& other) const {
 
 // Compare within an Epsilon to ensure layer datas are similar within reason
 template <typename T, typename T_EP> bool LayerData::compareWithin(const LayerData& other, const T_EP epsilon) const {
-    return epsilon > compare<T>(other);
+    // Cosine similarity ranges from -1 to 1, with 1 being perfect match
+    // We want to return true if similarity is within epsilon of 1.0
+    return compare<T>(other) >= (1.0 - epsilon);
 }
 
 template <typename T, typename T_EP> bool LayerData::compareWithinPrint(const LayerData& other, const T_EP epsilon) const {
