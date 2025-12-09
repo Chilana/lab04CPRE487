@@ -342,19 +342,19 @@ void runLayerTest(const std::size_t layerNum, const Model& model, const Path& ba
 void runInferenceTest(const Model& model, const Path& basePath) {
     int correct_classifications = 0;
     
-    for(int i = 0; i < 10; i++) {
-        logInfo("\n--- Running Inference Test ---");
+    for(int i = 0; i < 1000; i++) {
+        // logInfo("\n--- Running Inference Test ---");
 
         // Load the input image
         LayerData img(model[0].getInputParams(), basePath / "image_" + std::to_string(i) + ".bin");
         img.loadData();
 
-        Timer timer("Full Inference");
+        // Timer timer("Full Inference");
 
         // Run full inference on the model
-        timer.start();
+        // timer.start();
         const LayerData& output = model.inference(img, Layer::InfType::NAIVE);
-        timer.stop();
+        // timer.stop();
 
         // Compare against the final layer output (layer 11 for our 12-layer model, 0-indexed)
         // The model has 13 layers (0-12), so the final output should be layer_11_output.bin
@@ -371,18 +371,18 @@ void runInferenceTest(const Model& model, const Path& basePath) {
             if (match) correct_classifications++;
             
             // Show classification comparison
-            std::cout << "Image " << i << ": Our Class=" << our_prediction 
-                      << ", Expected Class=" << expected_prediction 
-                      << " [" << (match ? "✓ MATCH" : "✗ DIFFER") << "]" << std::endl;
+            // std::cout << "Image " << i << ": Our Class=" << our_prediction 
+            //           << ", Expected Class=" << expected_prediction 
+            //           << " [" << (match ? "✓ MATCH" : "✗ DIFFER") << "]" << std::endl;
             
             // Also show cosine similarity for reference
-            std::cout << "  Cosine Similarity: ";
-            output.compareWithinPrint<fp32>(expected);
+            // std::cout << "  Cosine Similarity: ";
+            // output.compareWithinPrint<fp32>(expected);
             
             expected.freeData();
         } catch (const std::exception& e) {
-            std::cout << "Full inference test failed: " << e.what() << std::endl;
-            std::cout << "Note: Expected final layer output file may not exist." << std::endl;
+            // std::cout << "Full inference test failed: " << e.what() << std::endl;
+            // std::cout << "Note: Expected final layer output file may not exist." << std::endl;
         }
         
         // Free input image memory after each iteration
@@ -390,8 +390,8 @@ void runInferenceTest(const Model& model, const Path& basePath) {
     }
     
     std::cout << "\n=== NAIVE INFERENCE SUMMARY ===" << std::endl;
-    std::cout << "Classification Accuracy: " << correct_classifications << "/10 ("
-              << (correct_classifications * 10.0f) << "%)" << std::endl;
+    std::cout << "Classification Accuracy: " << correct_classifications << "/1000 ("
+              << (correct_classifications / 10.0f) << "%)" << std::endl;
     std::cout << "================================\n" << std::endl;
 }
 
@@ -646,8 +646,8 @@ void runQuantizedInferenceTest(const Model& model, const Path& basePath) {
     int correct_vs_expected = 0;
     int correct_vs_naive = 0;
     
-    for(int i = 0; i < 10; i++) {
-        logInfo("\n--- Running QUANTIZED Inference Test ---");
+    for(int i = 0; i < 1000; i++) {
+        // logInfo("\n--- Running QUANTIZED Inference Test ---");
 
         // Added by BibidhB: Set to full inference chain mode and reset counter
         setCalibrationMode(true);  // Enable layer-specific calibration for full chain
@@ -657,12 +657,12 @@ void runQuantizedInferenceTest(const Model& model, const Path& basePath) {
         LayerData img(model[0].getInputParams(), basePath / "image_" + std::to_string(i) + ".bin");
         img.loadData();
 
-        Timer timer("Quantized Full Inference");
+        // Timer timer("Quantized Full Inference");
 
         // Run full inference on the model using QUANTIZED mode
-        timer.start();
+        // timer.start();
         const LayerData& output = model.inference(img, Layer::InfType::QUANTIZED);
-        timer.stop();
+        // timer.stop();
 
         // Compare against the final layer output (layer 11 for our 12-layer model, 0-indexed)
         try {
@@ -677,15 +677,15 @@ void runQuantizedInferenceTest(const Model& model, const Path& basePath) {
             
             if (match_expected) correct_vs_expected++;
             
-            std::cout << "QUANTIZED vs EXPECTED: Class " << quantized_prediction 
-                      << " vs " << expected_prediction
-                      << " [" << (match_expected ? "✓ MATCH" : "✗ DIFFER") << "]" << std::endl;
-            std::cout << "  Cosine Similarity: ";
-            output.compareWithinPrint<fp32>(expected);
+            // std::cout << "QUANTIZED vs EXPECTED: Class " << quantized_prediction 
+            //           << " vs " << expected_prediction
+            //           << " [" << (match_expected ? "✓ MATCH" : "✗ DIFFER") << "]" << std::endl;
+            // std::cout << "  Cosine Similarity: ";
+            // output.compareWithinPrint<fp32>(expected);
             
             expected.freeData();
         } catch (const std::exception& e) {
-            std::cout << "Quantized inference test failed: " << e.what() << std::endl;
+            // std::cout << "Quantized inference test failed: " << e.what() << std::endl;
         }
         
         // Also compare quantized vs naive to see the difference
@@ -697,25 +697,25 @@ void runQuantizedInferenceTest(const Model& model, const Path& basePath) {
         
         if (match_naive) correct_vs_naive++;
         
-        std::cout << "QUANTIZED vs NAIVE: Class " << quantized_prediction 
-                  << " vs " << naive_prediction
-                  << " [" << (match_naive ? "✓ MATCH" : "✗ DIFFER") << "]" << std::endl;
-        std::cout << "  Cosine Similarity: ";
-        output.compareWithinPrint<fp32>(naiveOutput);
+        // std::cout << "QUANTIZED vs NAIVE: Class " << quantized_prediction 
+        //           << " vs " << naive_prediction
+        //           << " [" << (match_naive ? "✓ MATCH" : "✗ DIFFER") << "]" << std::endl;
+        // std::cout << "  Cosine Similarity: ";
+        // output.compareWithinPrint<fp32>(naiveOutput);
 
         // Added by BibidhB: Add classification performance evaluation
         // To support accuracy numbers instead of just cosine similarity
-        evaluateClassificationPerformance(naiveOutput, output, i);
+        // evaluateClassificationPerformance(naiveOutput, output, i);
         
         // Free input image memory after each iteration
         img.freeData();
     }
     
     std::cout << "\n=== QUANTIZED INFERENCE SUMMARY ===" << std::endl;
-    std::cout << "Quantized vs Expected Accuracy: " << correct_vs_expected << "/10 ("
-              << (correct_vs_expected * 10.0f) << "%)" << std::endl;
-    std::cout << "Quantized vs Naive Accuracy: " << correct_vs_naive << "/10 ("
-              << (correct_vs_naive * 10.0f) << "%)" << std::endl;
+    std::cout << "Quantized vs Expected Accuracy: " << correct_vs_expected << "/1000 ("
+              << (correct_vs_expected / 10.0f) << "%)" << std::endl;
+    std::cout << "Quantized vs Naive Accuracy: " << correct_vs_naive << "/1000 ("
+              << (correct_vs_naive / 10.0f) << "%)" << std::endl;
     std::cout << "===================================\n" << std::endl;
 }
 
