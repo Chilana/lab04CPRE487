@@ -26,8 +26,10 @@ EXE_DEBUG = $(BIN)/ml_debug
 	CC_DEBUG = -g -Og
 	CC_OPT_FLAGS = -O3 -fno-tree-pre
 	CC_SIMD_FLAGS = -march=native
-	CC_FLAGS = $(CC_ALL) $(CC_OPT_FLAGS) $(if $(filter $(SIMD), true), $(CC_SIMD_FLAGS),)
-	CC_DEBUG_FLAGS = $(CC_ALL) $(CC_DEBUG) $(if $(filter $(SIMD), true), $(CC_SIMD_FLAGS),)
+	QUANTIZE_BITS ?= 2
+	CC_QUANTIZE = -DQUANTIZE=$(QUANTIZE_BITS)
+	CC_FLAGS = $(CC_ALL) $(CC_OPT_FLAGS) $(CC_QUANTIZE) $(if $(filter $(SIMD), true), $(CC_SIMD_FLAGS),)
+	CC_DEBUG_FLAGS = $(CC_ALL) $(CC_DEBUG) $(CC_QUANTIZE) $(if $(filter $(SIMD), true), $(CC_SIMD_FLAGS),)
 
 # Libs
 # CC_FLAGS_END += -pthread -lfmt

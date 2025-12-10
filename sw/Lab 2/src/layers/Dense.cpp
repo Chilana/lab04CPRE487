@@ -13,6 +13,31 @@
 #include "../Utils.h"
 #include "Layer.h"
 
+// Include QUANTIZE definition from Config.h or ML.cpp
+#ifndef QUANTIZE
+#define QUANTIZE 4  // Default to 4-bit if not defined
+#endif
+
+// Quantization bit-width configuration
+#if QUANTIZE == 2
+    #define QUANT_MIN -2
+    #define QUANT_MAX 1
+    #define QUANT_LEVELS 4
+    #define QUANT_RANGE 3.0f  // Range for scaling (max - min)
+#elif QUANTIZE == 4
+    #define QUANT_MIN -8
+    #define QUANT_MAX 7
+    #define QUANT_LEVELS 16
+    #define QUANT_RANGE 15.0f
+#elif QUANTIZE == 8
+    #define QUANT_MIN -128
+    #define QUANT_MAX 127
+    #define QUANT_LEVELS 256
+    #define QUANT_RANGE 255.0f
+#else
+    #error "QUANTIZE must be 2, 4, or 8"
+#endif
+
 namespace ML
 {
     // ==========================================================================
@@ -209,14 +234,24 @@ namespace ML
         
         // Load calibration statistics if not already loaded
         if (!dense_calibration_loaded) {
+            // Select calibration file based on quantization bit-width
+            std::string cal_filename;
+            #if QUANTIZE == 2
+                cal_filename = "calibration_stats_int2.json";
+            #elif QUANTIZE == 4
+                cal_filename = "calibration_stats_int4.json";
+            #elif QUANTIZE == 8
+                cal_filename = "calibration_stats.json";
+            #endif
+            
             // Try different possible paths for the calibration file
             std::vector<std::string> possible_paths = {
-                "/home/chilanaa/lab04/calibration_stats_int4.json",
-                "../../../SW/Lab3/Phase_I_Calibration/calibration_stats.json",
-                "../../SW/Lab3/Phase_I_Calibration/calibration_stats.json", 
-                "../SW/Lab3/Phase_I_Calibration/calibration_stats.json",
-                "SW/Lab3/Phase_I_Calibration/calibration_stats.json",
-                "calibration_stats.json"
+                "/home/chilanaa/lab04/" + cal_filename,
+                "../../../SW/Lab3/Phase_I_Calibration/" + cal_filename,
+                "../../SW/Lab3/Phase_I_Calibration/" + cal_filename, 
+                "../SW/Lab3/Phase_I_Calibration/" + cal_filename,
+                "SW/Lab3/Phase_I_Calibration/" + cal_filename,
+                cal_filename
             };
             
             bool found = false;
@@ -274,14 +309,14 @@ namespace ML
             fp32 input_range = input_max - input_min;
             if (input_range < 1e-8f) input_range = 1.0f;
 
-            Si = 254.0f / input_range;  // Use full int8 range (-127 to 127)
+            Si = QUANT_RANGE / input_range;  // Use full quantization range
 
             // IMPROVED: Center the quantization range more optimally
             fp32 zero_point_float = -Si * (input_min + input_max) / 2.0f;  // Center around midpoint
-            zi = static_cast<i8>(std::max(-8.0f, std::min(7.0f, std::round(zero_point_float))));
+            zi = static_cast<i8>(std::max(static_cast<fp32>(QUANT_MIN), std::min(static_cast<fp32>(QUANT_MAX), std::round(zero_point_float))));
             
-            // Clamp zi to valid int8 range
-            zi = static_cast<i8>(std::max(-8, std::min(7, static_cast<int>(zi))));
+            // Clamp zi to valid quantization range
+            zi = static_cast<i8>(std::max(QUANT_MIN, std::min(QUANT_MAX, static_cast<int>(zi))));
             
             calibration_mode = "ADAPTIVE";
             dense_layer_count++;
@@ -349,7 +384,7 @@ namespace ML
             max_weight = 1.0f;
         }
         
-        fp32 Sw = 127.0f / max_weight;
+        fp32 Sw = static_cast<fp32>(QUANT_MAX) / max_weight;
         logDebug("Dense weight scale Sw = " + std::to_string(Sw) + " (max_weight = " + std::to_string(max_weight) + ")");
 
         // -------------------------
@@ -372,7 +407,7 @@ namespace ML
         
         for (size_t i = 0; i < totalInputFeatures; i++) {
             i32 temp = static_cast<i32>(std::round(Si * dataIn.get<fp32>(i))) + zi;
-            quantized_input[i] = static_cast<i8>(std::max(-8, std::min(7, temp)));
+            quantized_input[i] = static_cast<i8>(std::max(QUANT_MIN, std::min(QUANT_MAX, temp)));
         }
         
         logDebug("Quantized " + std::to_string(totalInputFeatures) + " dense input values to int8");
@@ -384,7 +419,7 @@ namespace ML
         
         for (size_t i = 0; i < weight_size; i++) {
             i32 temp = static_cast<i32>(std::round(Sw * getWeightData().get<fp32>(i)));
-            quantized_weights[i] = static_cast<i8>(std::max(-8, std::min(7, temp)));
+            quantized_weights[i] = static_cast<i8>(std::max(QUANT_MIN, std::min(QUANT_MAX, temp)));
         }
         
         logDebug("Quantized " + std::to_string(weight_size) + " dense weight values to int8");

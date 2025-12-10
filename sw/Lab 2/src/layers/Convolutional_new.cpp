@@ -14,6 +14,28 @@
 #include "../Utils.h"
 #include "Layer.h"
 
+// Include QUANTIZE definition from Config.h or ML.cpp
+#ifndef QUANTIZE
+#define QUANTIZE 4  // Default to 4-bit if not defined
+#endif
+
+// Quantization bit-width configuration
+#if QUANTIZE == 2
+    #define QUANT_MIN -2
+    #define QUANT_MAX 1
+    #define QUANT_LEVELS 4
+#elif QUANTIZE == 4
+    #define QUANT_MIN -8
+    #define QUANT_MAX 7
+    #define QUANT_LEVELS 16
+#elif QUANTIZE == 8
+    #define QUANT_MIN -128
+    #define QUANT_MAX 127
+    #define QUANT_LEVELS 256
+#else
+    #error "QUANTIZE must be 2, 4, or 8"
+#endif
+
 namespace ML
 {
     // ==========================================================================
@@ -197,15 +219,21 @@ namespace ML
         
         // Load calibration statistics if not already loaded
         if (!calibration_loaded) {
+            // Select calibration file based on quantization bit-width
+            std::string cal_filename;
+            #if QUANTIZE == 2
+                cal_filename = "calibration_stats_int2.json";
+            #elif QUANTIZE == 4
+                cal_filename = "calibration_stats_int4.json";
+            #elif QUANTIZE == 8
+                cal_filename = "calibration_stats.json";
+            #endif
+            
             // Try different possible paths for the calibration file
             std::vector<std::string> possible_paths = {
-                "/home/chilanaa/lab04/calibration_stats_int4.json",
-                "../../../SW/Lab3/Phase_I_Calibration/calibration_stats.json",
-                "../../SW/Lab3/Phase_I_Calibration/calibration_stats.json", 
-                "../SW/Lab3/Phase_I_Calibration/calibration_stats.json",
-                "SW/Lab3/Phase_I_Calibration/calibration_stats.json",
-                "calibration_stats.json"
-               // "/home/chilanaa/20250917_CPRE_Lab2/data/calibration_stats.json"
+                "/home/chilanaa/lab04/" + cal_filename,
+                cal_filename,
+                "../" + cal_filename
             };
             
             bool found = false;
@@ -339,6 +367,7 @@ namespace ML
         // ==========================================================================
         // Formula: ix = round(Si * Ix) + zi
         // Using pre-calculated Si and zi from calibration stats
+        // Quantization bit-width: QUANTIZE bits (2, 4, or 8)
         // ==========================================================================
         
         size_t input_size = getInputParams().flat_count();
@@ -346,26 +375,27 @@ namespace ML
         
         for (size_t i = 0; i < input_size; i++) {
             i32 temp = static_cast<i32>(std::round(Si * dataIn.get<fp32>(i))) + zi;
-            quantized_input[i] = static_cast<i8>(std::max(-8, std::min(7, temp)));
+            quantized_input[i] = static_cast<i8>(std::max(QUANT_MIN, std::min(QUANT_MAX, temp)));
         }
 
-        //logDebug("Quantized " + std::to_string(input_size) + " input values to int4");
+        //logDebug("Quantized " + std::to_string(input_size) + " input values to " + std::to_string(QUANTIZE) + "-bit");
 
         // ==========================================================================
         // SECTION 5: QUANTIZE ALL WEIGHTS (BEFORE CONVOLUTION LOOPS)
         // ==========================================================================
         // Formula: wx = round(Sw * Wx)
         // Note: No zero point for weights (symmetric quantization)
+        // Quantization bit-width: QUANTIZE bits (2, 4, or 8)
         // ==========================================================================
         
         std::vector<i8> quantized_weights(weight_size);
         
         for (size_t i = 0; i < weight_size; i++) {
             i32 temp = static_cast<i32>(std::round(Sw * getWeightData().get<fp32>(i)));
-            quantized_weights[i] = static_cast<i8>(std::max(-8, std::min(7, temp)));
+            quantized_weights[i] = static_cast<i8>(std::max(QUANT_MIN, std::min(QUANT_MAX, temp)));
         }
 
-        //logDebug("Quantized " + std::to_string(weight_size) + " weight values to int4");
+        //logDebug("Quantized " + std::to_string(weight_size) + " weight values to " + std::to_string(QUANTIZE) + "-bit");
 
         // ==========================================================================
         // SECTION 6: QUANTIZE ALL BIASES (BEFORE CONVOLUTION LOOPS)
