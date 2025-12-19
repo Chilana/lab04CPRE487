@@ -18,7 +18,9 @@
 #include "layers/MaxPooling.h"
 #include "layers/Softmax.h"
 
+#ifndef QUANTIZE
 #define QUANTIZE 8
+#endif
 
 #define METHOD 2
 
